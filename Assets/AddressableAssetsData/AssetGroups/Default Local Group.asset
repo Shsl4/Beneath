@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: fdf338a9cfa0ab548a5a316500c243b6
+  m_SerializeEntries:
+  - m_GUID: 302dab09c0b8f634f94ea31c878f1135
+    m_Address: Assets/Prefabs/UI/InventoryInterface.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 426a210c48e96fa4faecb2ad476539ad
+    m_Address: Assets/Prefabs/PickupItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5b379d08c22ed3a43b79ec685c80724b
+    m_Address: Assets/Art/Sprites/sans.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 68a32aa7fb580054fbe7d835e2db42ce
+    m_Address: Assets/Prefabs/UI/DialogBox.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 93d0990134e93014fa854dd5cd7eef9c
+    m_Address: Assets/Prefabs/SwordItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: cf44af70d40c47d439c369acbd84c9cb
+    m_Address: Assets/Prefabs/UI/InventorySlotUI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 286c1aa3464cb6f4e9a7f1d2a3366907, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8bb4b15b386a3dd46bf4056f11bf6850, type: 2}
+    - {fileID: 11400000, guid: d8e8caeba852433448d940129d06c36f, type: 2}
