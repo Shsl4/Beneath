@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Attributes;
 using Assets.Scripts.Interfaces;
 using Assets.Scripts.UI;
+using Assets.Scripts.UI.Inventory;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -26,7 +27,7 @@ namespace Assets.Scripts
                     
                     Beneath.InstantiateSafeThen(Beneath.Assets.InventoryInterface, instHandle =>
                     {
-                        instHandle.Result.GetComponent<ChestView>().SetupSlots(_chestInventory);
+                        instHandle.Result.GetComponent<InventoryManager>().SetupSlots(_chestInventory);
                     });
                 });
             }
@@ -37,7 +38,6 @@ namespace Assets.Scripts
             _chestInventory = new Inventory(10);
         }
 
-        // Update is called once per frame
         void Update()
         {
         

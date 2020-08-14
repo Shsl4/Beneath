@@ -186,9 +186,9 @@ MonoBehaviour:
   MaxHealth: 10
   CharacterName: Ana
   HasInventory: 1
-  InventorySlotsAmount: 5
+  InventorySlotsAmount: 8
   CharacterSpeed: 1
-  CharacterRange: 50
+  CharacterRange: 1
 --- !u!50 &8184213977416851465
 Rigidbody2D:
   serializedVersion: 4

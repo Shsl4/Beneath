@@ -38,17 +38,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Test",
+                    "name": "Inventory",
                     "type": "Button",
                     "id": "cd91e1a0-fa02-45e0-ae99-4a98a1179bd4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Test2",
-                    "type": "Button",
-                    "id": "b2ed1708-341c-4b23-9d51-55291de1fd6d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -245,22 +237,11 @@
                 {
                     "name": "",
                     "id": "dbc376b2-b9be-4830-b7be-17b96a684f1d",
-                    "path": "<Keyboard>/p",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Test",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "335215bd-f093-4e32-b720-4148f3688b81",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Test2",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

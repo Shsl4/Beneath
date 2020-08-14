@@ -10,7 +10,7 @@ namespace Assets.Scripts
 
         public String CharacterName;
         public bool HasInventory = false;
-        public int InventorySlotsAmount = 5;
+        public int InventorySlotsAmount = 8;
         
         protected Rigidbody2D RigidBody;
         protected Inventory CharacterInventory;

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.InputSystem;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Assets.Scripts
@@ -10,11 +11,9 @@ namespace Assets.Scripts
 
         public static class Assets
         {
-            
             public static readonly AssetReference DialogBox = new AssetReference("Assets/Prefabs/UI/DialogBox.prefab");
             public static readonly AssetReference InventoryInterface = new AssetReference("Assets/Prefabs/UI/InventoryInterface.prefab");
             public static readonly AssetReference SansSprite = new AssetReference("Assets/Art/Sprites/sans.png");
-            
         }
         
         public static void LoadThen<T>(AssetReference asset, Action<AsyncOperationHandle<T>> action) { asset.LoadAssetAsync<T>().Completed += action; }

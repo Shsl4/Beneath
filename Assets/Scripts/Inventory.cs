@@ -112,27 +112,25 @@ namespace Assets.Scripts
 
         public InventorySlot[] GetSlots() { return _slots; }
 
-        public InventorySlot GetSlot(int slotIndex) { return (InventorySlot)_slots.GetValue(slotIndex); }
+        public InventorySlot GetSlot(int slotIndex)
+        {
+            
+            return _slots.Length > slotIndex ? (InventorySlot)_slots.GetValue(slotIndex) : null;
+        }
 
         public bool ClearSlot(int slotIndex)
         {
-
             return GetSlot(slotIndex) != null && GetSlot(slotIndex).Clear();
-
         }
 
         public bool SetItemInSlot(int slotIndex, InventoryItem item)
         {
-
             return GetSlot(slotIndex) != null && GetSlot(slotIndex).SetItem(item);
-
         }
 
         public void ClearInventory()
         {
-
             foreach (var slot in _slots) { slot.Clear(); }
-            
         }
 
     }
