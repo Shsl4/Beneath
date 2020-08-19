@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Scripts.Interfaces
+namespace Interfaces
 {
     public interface IIdentifiable
     {

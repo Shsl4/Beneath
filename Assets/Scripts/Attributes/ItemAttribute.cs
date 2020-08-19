@@ -1,7 +1,8 @@
 ﻿using System;
 
-namespace Assets.Scripts.Attributes
+namespace Attributes
 {
+    [Serializable]
     public abstract class ItemAttribute
     {
     
@@ -11,6 +12,8 @@ namespace Assets.Scripts.Attributes
         {
             AttributeName = name;
         }
+
+        public abstract string Format();
 
     }
 }

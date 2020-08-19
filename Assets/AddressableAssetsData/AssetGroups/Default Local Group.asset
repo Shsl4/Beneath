@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: fdf338a9cfa0ab548a5a316500c243b6
   m_SerializeEntries:
+  - m_GUID: 1b19d4511ee8eaa49955ec6cba3aaf39
+    m_Address: Assets/Prefabs/UI/Menu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 302dab09c0b8f634f94ea31c878f1135
     m_Address: Assets/Prefabs/UI/InventoryInterface.prefab
     m_ReadOnly: 0
@@ -24,7 +30,7 @@ MonoBehaviour:
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 426a210c48e96fa4faecb2ad476539ad
-    m_Address: Assets/Prefabs/PickupItem.prefab
+    m_Address: Assets/Prefabs/RawItem.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -37,12 +43,6 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 68a32aa7fb580054fbe7d835e2db42ce
     m_Address: Assets/Prefabs/UI/DialogBox.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 93d0990134e93014fa854dd5cd7eef9c
-    m_Address: Assets/Prefabs/SwordItem.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

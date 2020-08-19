@@ -1,38 +1,101 @@
-﻿using Assets.Scripts.UI.Inventory.BottomView.Info;
-using JetBrains.Annotations;
+﻿using Interfaces;
+using UI.Inventory.BottomView.Info;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace Assets.Scripts.UI.Inventory
+namespace UI.Inventory
 {
-    public class InventoryManager : MonoBehaviour
+    public class InventoryManager : MasterInterface, ISlotEventResponder, IDialogBoxResponder
     {
-        public SlotComponent[] Slots => GetComponentsInChildren<SlotComponent>();
+        private SlotComponent[] Slots => GetComponentsInChildren<SlotComponent>();
         public BottomComponent Bottom => GetComponentInChildren<BottomComponent>();
-
-        [CanBeNull]
-        public SlotComponent SelectedSlot;
-
-        public void SetupSlots(Scripts.Inventory target)
+        
+        private void Awake()
         {
-            
+            gameObject.SetActive(false);
+
             for (int i = 0; i < Slots.Length; i++)
             {
-                if (target.GetSlot(i) != null && target.GetSlot(i).GetItem() != null)
+                Slots[i].slotIndex = i;
+            }
+            
+        }
+
+        public void RefreshSlots()
+        {
+            for (int i = 0; i < Slots.Length; i++)
+            {
+                if (Viewer.GetInventory().GetSlot(i) != null)
                 {
-                    Slots[i].SetHeldItem(target.GetSlot(i).GetItem());
+                    Slots[i].SetHeldItem(Viewer.GetInventory().GetSlot(i).GetItem());
                 }
             }
         }
-
-        public void OnDisable()
+        public override void Open(ControllableCharacter character)
         {
-            SelectedSlot = null;
+            base.Open(character);
+            RefreshSlots();
         }
 
-        public void OnEnable()
+        public override void EnableSelection()
         {
-            SelectedSlot = null;
-            Slots[0].Selectable.Select();
+
+            Bottom.Selection.Use.interactable = true;
+            Bottom.Selection.Discard.interactable = true;
+
+        }
+
+        public override void DisableSelection()
+        {
+
+            Bottom.Selection.Use.interactable = false;
+            Bottom.Selection.Discard.interactable = false;
+
+        }
+
+        public void JumpToSelection()
+        {
+            EnableSelection();
+            Bottom.Selection.Use.gameObject.GetComponent<Selectable>().Select();
+        }
+
+        public void RefreshInfoFromSlot(SlotComponent slot)
+        {
+            
+            Bottom.UpdateInfo(slot.GetHeldItem());
+
+            if (slot.GetHeldItem() != null && (slot.GetHeldItem().type == ItemTypes.Armor || slot.GetHeldItem().type == ItemTypes.Weapon))
+            {
+                
+                Bottom.Selection.Use.TextBox.SetText("EQUIP");
+                
+            }
+            else
+            {
+                Bottom.Selection.Use.TextBox.SetText("USE");
+            }
+        }
+
+        public void DropItemFromActiveSlot(bool discard)
+        {
+            Viewer.DropItemFromSlot(LastSubmit.GetComponent<SlotComponent>().slotIndex);
+            RefreshSlots();
+        }
+
+        public void DisplayWithText(string text, bool select)
+        {
+
+            if (select)
+            {
+                Bottom.TextView.RevealAndSelect(text);
+
+            }
+            else
+            {
+                Bottom.TextView.RevealText(text);
+
+            }
+            
         }
     }
     

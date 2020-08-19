@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Inventory",
+                    "name": "Escape",
                     "type": "Button",
                     "id": "cd91e1a0-fa02-45e0-ae99-4a98a1179bd4",
                     "expectedControlType": "Button",
@@ -237,11 +237,11 @@
                 {
                     "name": "",
                     "id": "dbc376b2-b9be-4830-b7be-17b96a684f1d",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Inventory",
+                    "action": "Escape",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

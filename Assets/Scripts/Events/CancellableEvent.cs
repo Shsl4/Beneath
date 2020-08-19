@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Events
+﻿namespace Events
 {
     public abstract class CancellableEvent
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Events
+namespace Events
 {
     public class HealEvent : CancellableEvent
     {

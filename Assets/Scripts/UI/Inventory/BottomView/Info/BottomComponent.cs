@@ -1,38 +1,40 @@
-﻿using Assets.Scripts.UI.Inventory.BottomView.Selection;
+﻿using System;
+using System.Collections;
 using TMPro;
+using UI.Inventory.BottomView.Selection;
 using UnityEngine;
 
-namespace Assets.Scripts.UI.Inventory.BottomView.Info
+namespace UI.Inventory.BottomView.Info
 {
     public class BottomComponent : MonoBehaviour
     {
-
-        public InfoComponent Info { get; private set; }
-        public EmptyComponent Empty { get; private set; }
+        public TextViewComponent TextView => GetComponentInChildren<TextViewComponent>(true);
         public SelectionComponent Selection => GetComponentInChildren<SelectionComponent>();
 
-        void Start()
-        {
-            Info = GetComponentInChildren<InfoComponent>();
-            Empty = GetComponentInChildren<EmptyComponent>();
-        }
-        
+        private IEnumerator _revealRoutine;
+
         public void UpdateInfo(InventoryItem item)
         {
             
+            String output = "";
+
             if (item != null)
             {
-                Info.NameBox.GetComponent<TMP_Text>().text = "NAME: " + item.Name.ToUpper();
-                Info.TypeBox.GetComponent<TMP_Text>().text = "TYPE: " + item.Type.ToString().ToUpper();
-                Info.ValueBox.GetComponent<TMP_Text>().text = "VALUE: " + (item.Value > 0 ? item.Value.ToString() : "NONE");
-                Empty.gameObject.SetActive(false);
-                Info.gameObject.SetActive(true);
+                
+                output += "Name: " + item.name + "\n\n";
+                output += "Type: " + item.type + "\n\n";
+                output += item.FormatDescription();
+                output = output.ToUpper();
+
             }
             else
             {
-                Info.gameObject.SetActive(false);
-                Empty.gameObject.SetActive(true);
+                output = "This slot is empty.";
             }
+            
+            TextView.RevealText(output);
+            
         }
+
     }
 }

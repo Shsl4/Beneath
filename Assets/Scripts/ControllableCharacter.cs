@@ -1,148 +1,148 @@
-﻿using Assets.Scripts.Interfaces;
-using Assets.Scripts.UI;
-using Assets.Scripts.UI.Inventory;
+﻿using Interfaces;
+using Interfaces.UI;
+using UI;
+using UI.Inventory;
+using UI.Menu;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Assets.Scripts
+public class ControllableCharacter : Character
 {
-    public class ControllableCharacter : Character
+    public float characterSpeed = 1.0f;
+    public float characterRange = 1.5f;
+        
+    private float _horizontalInput;
+    private float _verticalInput;
+    private Vector2 _lookDirection = new Vector2(1,0);
+    private MenuManager _menuManager;
+    private MasterInterface _activeInterface;
+    
+    public override void Update() 
     {
-        public float CharacterSpeed = 1.0f;
-        public float CharacterRange = 1.5f;
         
-        protected float HorizontalInput;
-        protected float VerticalInput;
-        
-        private Vector2 _lookDirection = new Vector2(1,0);
-        private InventoryManager _inventoryManager;
+        base.Update();
 
-        private IUserInterface _activeInterface;
-
-        public bool HasActiveInterface() { return _activeInterface != null; }
-
-        public override void Update() 
-        {
-        
-            base.Update();
-
-            Vector2 move = new Vector2(HorizontalInput, VerticalInput);
+        Vector2 move = new Vector2(_horizontalInput, _verticalInput);
             
-            if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
-            {
-                _lookDirection.Set(move.x, move.y);
-                _lookDirection.Normalize();
-            }
-
+        if(!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        {
+            _lookDirection.Set(move.x, move.y);
+            _lookDirection.Normalize();
         }
 
-        public void OnInteract()
-        {
-            
-            Vector2 start = RigidBody.position + Vector2.up * 0.2f;
-            RaycastHit2D hit = Physics2D.Raycast(start, _lookDirection, CharacterRange, LayerMask.GetMask("Interaction"));
-            
-            Debug.DrawRay(new Vector3(start.x, start.y, 0), new Vector3(_lookDirection.x, _lookDirection.y, 0) * CharacterRange, Color.red, 2.0f);
+    }
 
-            if (hit.collider != null && hit.collider.gameObject.GetComponent<IInteractable>() != null)
-            {
-                IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
-                interactable.Interact(gameObject);
-            }
+    public void OnInteract()
+    {
             
+        Vector2 start = RigidBody.position + Vector2.up * 0.2f;
+        RaycastHit2D hit = Physics2D.Raycast(start, _lookDirection, characterRange, LayerMask.GetMask("Interaction"));
+            
+        Debug.DrawRay(new Vector3(start.x, start.y, 0), new Vector3(_lookDirection.x, _lookDirection.y, 0) * characterRange, Color.red, 2.0f);
+
+        if (hit.collider != null && hit.collider.gameObject.GetComponent<IInteractable>() != null)
+        {
+            IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
+            interactable.Interact(gameObject);
         }
-
-        public void OnFire()
-        {
             
-            Vector2 start = RigidBody.position /*+ Vector2.up * 0.2f*/;
-            RaycastHit2D[] hits = Physics2D.RaycastAll(start, _lookDirection, CharacterRange);
-            Debug.DrawRay(new Vector3(start.x, start.y, 0), new Vector3(_lookDirection.x, _lookDirection.y, 0) * CharacterRange, Color.green, 2.0f);
+    }
+
+    public void OnFire()
+    {
             
-            foreach (var hit in hits)
-            {
-                if (hit.collider.gameObject.Equals(gameObject)) { }
-                else
-                {
-                    if (hit.collider.gameObject.GetComponent<DamageableObject>() != null)
-                    {
-                        DamageableObject damageable = hit.collider.gameObject.GetComponent<DamageableObject>();
-                        damageable.Damage(GetCharacterDamage(), gameObject);
-                        return;
-                    }
-                }
-            }
+        Vector2 start = RigidBody.position /*+ Vector2.up * 0.2f*/;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(start, _lookDirection, characterRange);
+        Debug.DrawRay(new Vector3(start.x, start.y, 0), new Vector3(_lookDirection.x, _lookDirection.y, 0) * characterRange, Color.green, 2.0f);
             
-        }
-        
-        public void OnMove(InputValue value)
+        foreach (var hit in hits)
         {
-
-            Vector2 val = value.Get<Vector2>();
-            HorizontalInput = val.x;
-            VerticalInput = val.y;
-
-        }
-
-        void FixedUpdate()
-        {
-            
-            Vector2 position = RigidBody.position;
-            position.x += 10.0f * HorizontalInput * Time.deltaTime * CharacterSpeed;
-            position.y += 10.0f * VerticalInput * Time.deltaTime * CharacterSpeed;
-            RigidBody.MovePosition(position);
-            
-        }
-
-        bool DropInventoryItem(int slotIndex)
-        {
-            if (GetInventory().GetSlot(slotIndex) != null)
-            {
-                if (GetInventory().GetSlot(slotIndex).GetItem() != null)
-                {
-                    Vector3 spawnLocation = RigidBody.position + _lookDirection;
-                    
-                    Beneath.InstantiateSafeThen(GetInventory().GetSlot(slotIndex).GetItem().Asset, handle =>
-                    {
-                        GameObject newObject = handle.Result;
-                        newObject.transform.position = spawnLocation;
-                        GetInventory().ClearSlot(slotIndex);
-                    });
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public void OnInventory()
-        {
-            if (_inventoryManager == null)
-            {
-                Beneath.LoadThen<Sprite>(Beneath.Assets.SansSprite, handle =>
-                {
-                    Beneath.InstantiateSafeThen(Beneath.Assets.InventoryInterface, instHandle =>
-                    {
-                         _inventoryManager = instHandle.Result.GetComponent<InventoryManager>();
-                         _inventoryManager.SetupSlots(CharacterInventory);
-                    });
-                });
-            }
+            if (hit.collider.gameObject.Equals(gameObject)) { }
             else
             {
-                if (_inventoryManager.gameObject.activeSelf)
+                if (hit.collider.gameObject.GetComponent<DamageableObject>() != null)
                 {
-                    _inventoryManager.gameObject.SetActive(false);
-                }
-                else
-                {
-                    _inventoryManager.SetupSlots(CharacterInventory);
-                    _inventoryManager.gameObject.transform.root.gameObject.SetActive(true);
+                    DamageableObject damageable = hit.collider.gameObject.GetComponent<DamageableObject>();
+                    damageable.Damage(GetCharacterDamage(), gameObject);
+                    return;
                 }
             }
         }
+            
+    }
         
-        private int GetCharacterDamage() { return 3; }
+    public void OnMove(InputValue value)
+    {
+
+        Vector2 val = value.Get<Vector2>();
+        _horizontalInput = val.x;
+        _verticalInput = val.y;
+
+    }
+
+    void FixedUpdate()
+    {
+        if (_activeInterface == null)
+        {
+            UpdatePosition();
+        }
+    }
+
+    private void UpdatePosition()
+    {
+        
+        Vector2 position = RigidBody.position;
+        position.x += 10.0f * _horizontalInput * Time.deltaTime * characterSpeed;
+        position.y += 10.0f * _verticalInput * Time.deltaTime * characterSpeed;
+        RigidBody.MovePosition(position);
         
     }
+    
+    public void OnEscape()
+    {
+        if (_menuManager == null)
+        {
+            Beneath.InstantiateSafeThen(Beneath.Assets.Menu, instHandle =>
+            {
+                _menuManager = instHandle.Result.GetComponent<MenuManager>();
+                OpenUserInterface(_menuManager);
+
+            });
+            
+        }
+        else
+        {
+            OpenUserInterface(_menuManager);
+        }
+        
+    }
+    
+    public void OpenUserInterface(MasterInterface master)
+    {
+
+        if (_activeInterface == null)
+        {
+
+            _activeInterface = master;
+            _activeInterface.Open(this);
+
+        }
+
+    }
+
+    public void CloseActiveInterface()
+    {
+
+        if (_activeInterface != null)
+        {
+            
+            _activeInterface.Close();
+            _activeInterface = null;
+
+        }
+        
+    }
+        
 }

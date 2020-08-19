@@ -1,43 +1,56 @@
 ﻿using System;
-using Assets.Scripts.Attributes;
-using Assets.Scripts.Interfaces;
+using Attributes;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Assets.Scripts
+public class PickupItem : MonoBehaviour, IInteractable, IIdentifiable, IInventoryItem
 {
-    public class PickupItem : MonoBehaviour, IInteractable, IInventoryItem, IIdentifiable
+
+    public String itemName;
+    [TextArea]
+    public String description;
+    public ItemTypes type;
+    public int value;
+    public ItemAttribute[] Attributes;
+
+    public SpriteRenderer Renderer => GetComponent<SpriteRenderer>();
+    public BoxCollider2D Collider => GetComponent<BoxCollider2D>();
+    
+    public void Interact(GameObject source)
     {
-
-        public String ItemName;
-        public String ItemDescription;
-        public AssetReference ItemAsset;
-        public ItemTypes ItemType;
-        public int ItemValue;
-        public ItemAttribute[] ItemAttributes;
-
-        public void Interact(GameObject source)
+        if (source.GetComponent<IInventory>() != null)
         {
-            if (source.GetComponent<IInventory>() != null)
-            {
-                Inventory targetInventory = source.GetComponent<IInventory>().GetInventory();
+            Inventory targetInventory = source.GetComponent<IInventory>().GetInventory();
 
-                if (!targetInventory.IsFull())
-                {
-                    targetInventory.GetNextEmptySlot().SetItem(ToInventoryItem());
-                    Destroy(gameObject);
-                }
+            if (!targetInventory.IsFull())
+            {
+                targetInventory.GetNextEmptySlot().SetItem(ToInventoryItem());
+                Destroy(gameObject);
             }
         }
+    }
 
-        public InventoryItem ToInventoryItem()
-        {
-            return new InventoryItem(GetIdentifiableName(), ItemDescription, ItemAsset, gameObject.GetComponent<SpriteRenderer>().sprite, ItemType, ItemValue, ItemAttributes);
-        }
+    public string GetIdentifiableName()
+    {
+        return itemName;
+    }
 
-        public string GetIdentifiableName()
-        {
-            return ItemName;
-        }
+    public void FromInventoryItem(InventoryItem item)
+    {
+
+        itemName = item.name;
+        description = item.description;
+        type = item.type;
+        value = item.value;
+        Attributes = item.Attributes;
+        Collider.size = item.colliderSize;
+        Renderer.sprite = item.sprite;
+
+    }
+
+    public InventoryItem ToInventoryItem()
+    {
+        return new InventoryItem(itemName, description, Renderer.sprite, type, value, Collider.size, Attributes);
     }
 }
