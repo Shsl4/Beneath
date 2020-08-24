@@ -1,17 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts.UI;
 using UI;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BackDummy : BeneathSelectable<MasterInterface>
+namespace Dummies
 {
-
-    public override void OnSubmit(BaseEventData eventData)
-    { }
-
-    public override void OnCancel(BaseEventData eventData)
+    public class BackDummy : BeneathButton<UIManager>
     {
-        Master.NavigateBack();
+        
+        protected override void ExecuteAction()
+        {
+            Manager.NavigateBack();
+        }
+
+        public override void OnCancel(BaseEventData eventData)
+        {
+            Manager.NavigateBack();
+        }
     }
 }

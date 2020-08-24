@@ -4,7 +4,9 @@ namespace Interfaces
 {
     public interface IDamageable
     {
-        bool IsDestroyed();
+
+        bool CanBeDamaged();
+        
         int GetHealth();
         int GetMaxHealth();
 

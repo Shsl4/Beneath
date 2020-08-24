@@ -22,7 +22,6 @@ namespace UI.Inventory.BottomView.Info
             {
                 
                 output += "Name: " + item.name + "\n\n";
-                output += "Type: " + item.type + "\n\n";
                 output += item.FormatDescription();
                 output = output.ToUpper();
 

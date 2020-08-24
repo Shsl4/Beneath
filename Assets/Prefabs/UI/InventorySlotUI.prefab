@@ -133,8 +133,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8580062115165496011}
-  SelectOnBack: {fileID: 0}
-  SelectOnSubmit: {fileID: 0}
+  SelectSound: {fileID: 8300000, guid: 13ab2069d3f90cc438161da4ef10578b, type: 3}
+  SubmitSound: {fileID: 0}
   slotIndex: 0
 --- !u!1 &5394789284715669812
 GameObject:

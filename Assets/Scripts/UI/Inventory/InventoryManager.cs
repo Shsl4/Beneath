@@ -1,19 +1,19 @@
-﻿using Interfaces;
+﻿using Assets.Scripts.UI;
+using Interfaces;
 using UI.Inventory.BottomView.Info;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventoryManager : MasterInterface, ISlotEventResponder, IDialogBoxResponder
+    public class InventoryManager : UIManager, ISlotEventResponder, IDialogBoxResponder
     {
         private SlotComponent[] Slots => GetComponentsInChildren<SlotComponent>();
         public BottomComponent Bottom => GetComponentInChildren<BottomComponent>();
         
-        private void Awake()
+        protected override void Awake()
         {
-            gameObject.SetActive(false);
-
+            base.Awake();
             for (int i = 0; i < Slots.Length; i++)
             {
                 Slots[i].slotIndex = i;
@@ -87,7 +87,7 @@ namespace UI.Inventory
 
             if (select)
             {
-                Bottom.TextView.RevealAndSelect(text);
+                Bottom.TextView.SelectAndReveal(text);
 
             }
             else

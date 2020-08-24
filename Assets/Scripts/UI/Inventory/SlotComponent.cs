@@ -1,13 +1,13 @@
-﻿using Interfaces;
+﻿using Assets.Scripts.UI;
+using Interfaces;
 using UI.Inventory.BottomView;
-using UI.Menu;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class SlotComponent : BeneathButton<MasterInterface>
+    public class SlotComponent : BeneathButton<UIManager>
     {
         
         private InventoryItem _heldItem;
@@ -20,7 +20,7 @@ namespace UI.Inventory
             Image imageComponent = GetComponentsInChildren<Image>()[1];
             _heldItem = item;
 
-            if (_heldItem == null || _heldItem.sprite == null) { imageComponent.color = Color.black; }
+            if (_heldItem == null || !_heldItem.sprite) { imageComponent.color = Color.black; }
             else
             {
                 imageComponent.sprite = _heldItem.sprite;
@@ -31,7 +31,7 @@ namespace UI.Inventory
 
         public override void OnCancel(BaseEventData eventData)
         {
-            Master.NavigateBack();
+            Manager.NavigateBack();
         }
 
         public InventoryItem GetHeldItem()
@@ -43,7 +43,7 @@ namespace UI.Inventory
         {
             base.OnSelect(eventData);
             
-            if (Master is ISlotEventResponder responder)
+            if (Manager is ISlotEventResponder responder)
             {
                 responder.RefreshInfoFromSlot(this);
             }
@@ -53,8 +53,8 @@ namespace UI.Inventory
         {
             if (_heldItem != null)
             {
-                Master.LastSubmit = gameObject;
-                if (Master is ISlotEventResponder responder)
+                Manager.LastSubmit = gameObject;
+                if (Manager is ISlotEventResponder responder)
                 {
                     responder.JumpToSelection();
                 }

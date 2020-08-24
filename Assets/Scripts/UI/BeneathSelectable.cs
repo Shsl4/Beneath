@@ -1,14 +1,18 @@
-﻿using Interfaces.UI;
+﻿using Assets.Scripts.UI;
+using Interfaces.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
 {
-    public abstract class BeneathSelectable<T> : Selectable, ISelectableInterface where T : MasterInterface
+    public abstract class BeneathSelectable<T> : Selectable, ISelectableInterface where T : UIManager
     {
-        public T Master => GetComponentInParent<T>();
-        private void ApplyStyles()
+        public T Manager => GetComponentInParent<T>();
+        public AudioClip SelectSound;
+        public AudioClip SubmitSound;
+        
+        protected virtual void ApplyStyles()
         {
             
             ColorBlock customColors = new ColorBlock();
@@ -24,11 +28,24 @@ namespace UI
             navigation = nav;
             
         }
+        
+#if UNITY_EDITOR
         protected override void Reset()
         {
             base.Reset();
             ApplyStyles();
         }
+#endif
+        
+        public override void OnSelect(BaseEventData eventData)
+        {
+            base.OnSelect(eventData);
+            if (SelectSound)
+            {
+                Manager.Source.PlayOneShot(SelectSound);
+            }
+        }
+
         public abstract void OnSubmit(BaseEventData eventData);
         public abstract void OnCancel(BaseEventData eventData);
         

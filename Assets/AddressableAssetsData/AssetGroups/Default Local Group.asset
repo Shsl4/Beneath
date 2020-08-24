@@ -17,38 +17,32 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: fdf338a9cfa0ab548a5a316500c243b6
   m_SerializeEntries:
-  - m_GUID: 1b19d4511ee8eaa49955ec6cba3aaf39
-    m_Address: Assets/Prefabs/UI/Menu.prefab
+  - m_GUID: 0bb61c44a1f1c45409e307e612c5a689
+    m_Address: Assets/Prefabs/Characters/BeneathPlayer.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 302dab09c0b8f634f94ea31c878f1135
-    m_Address: Assets/Prefabs/UI/InventoryInterface.prefab
+  - m_GUID: 1168bcd6164e1c74cbd76ffcc282625f
+    m_Address: Assets/Prefabs/UI/SaveMenu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1b19d4511ee8eaa49955ec6cba3aaf39
+    m_Address: Assets/Prefabs/UI/EscapeMenu.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 426a210c48e96fa4faecb2ad476539ad
-    m_Address: Assets/Prefabs/RawItem.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 5b379d08c22ed3a43b79ec685c80724b
-    m_Address: Assets/Art/Sprites/sans.png
+    m_Address: Assets/Prefabs/Items/Item.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 68a32aa7fb580054fbe7d835e2db42ce
     m_Address: Assets/Prefabs/UI/DialogBox.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: cf44af70d40c47d439c369acbd84c9cb
-    m_Address: Assets/Prefabs/UI/InventorySlotUI.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

@@ -9,8 +9,8 @@ namespace UI.Inventory.BottomView.Selection
         protected override void ExecuteAction()
         {
 
-            Character Player = Master.Viewer;
-            SlotComponent Slot = Master.LastSubmit.GetComponent<SlotComponent>();
+            ControllableCharacter Player = Manager.Viewer;
+            SlotComponent Slot = Manager.LastSubmit.GetComponent<SlotComponent>();
             
             if (Slot.GetHeldItem().type == ItemTypes.Weapon)
             {
@@ -35,8 +35,8 @@ namespace UI.Inventory.BottomView.Selection
                     
                 }
                 
-                Master.DisableSelection();
-                Master.Bottom.TextView.RevealAndSelect(message);
+                Manager.DisableSelection();
+                Manager.Bottom.TextView.SelectAndReveal(message);
 
             }          
             else if (Slot.GetHeldItem().type == ItemTypes.Armor)
@@ -49,8 +49,8 @@ namespace UI.Inventory.BottomView.Selection
                 {
   
                     case Beneath.EquipResult.Success:
-                        message = "You equipped \"" + Player.CharacterWeapon.GetItem().name + "\".";
-                        Master.RefreshSlots();
+                        message = "You equipped \"" + Player.CharacterArmor.GetItem().name + "\".";
+                        Manager.RefreshSlots();
                         break;
 
                     case Beneath.EquipResult.AlreadyEquipped:
@@ -62,20 +62,20 @@ namespace UI.Inventory.BottomView.Selection
                         break;
                 }
                 
-                Master.DisableSelection();
-                Master.Bottom.TextView.RevealAndSelect(message);
+                Manager.DisableSelection();
+                Manager.Bottom.TextView.SelectAndReveal(message);
                     
             }
             
-            Master.RefreshSlots();
+            Manager.RefreshSlots();
             
         }
         
         public override void OnCancel(BaseEventData eventData)
         {
-            Master.EventSys.SetSelectedGameObject(Master.LastSubmit);
-            Master.LastSubmit = null;
-            Master.DisableSelection();
+            Manager.EventSys.SetSelectedGameObject(Manager.LastSubmit);
+            Manager.LastSubmit = null;
+            Manager.DisableSelection();
         }
     }
 }

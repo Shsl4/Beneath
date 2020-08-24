@@ -21,11 +21,8 @@ public class PickupItem : MonoBehaviour, IInteractable, IIdentifiable, IInventor
     {
         if (source.GetComponent<IInventory>() != null)
         {
-            Inventory targetInventory = source.GetComponent<IInventory>().GetInventory();
-
-            if (!targetInventory.IsFull())
+            if (source.GetComponent<IInventory>().PickupItem(ToInventoryItem()))
             {
-                targetInventory.GetNextEmptySlot().SetItem(ToInventoryItem());
                 Destroy(gameObject);
             }
         }
