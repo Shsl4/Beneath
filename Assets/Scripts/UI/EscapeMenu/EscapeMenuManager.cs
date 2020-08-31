@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.UI;
-using UI.EscapeMenu.Buttons;
+﻿using UI.EscapeMenu.Buttons;
 using UI.EscapeMenu.Equipment;
 using UI.Inventory;
 

@@ -2,12 +2,12 @@
 using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Assets.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public static class Beneath
 {
@@ -32,18 +32,34 @@ public static class Beneath
         
     }
     
+    [Serializable]
     public class SaveData
     {
 
-        public string PlayerName;
-        public string RoomName;
-        public int PlayerHealth;
-        public int PlayerExp;
-        public int PlayerMoney;
-        public InventoryItem PlayerArmor;
-        public InventoryItem PlayerWeapon;
-        public int PlayTime;
+        public string playerName;
+        public string roomName;
+        public int playerHealth;
+        public int playerExp;
+        public int playerMoney;
+        public InventoryItem playerArmor;
+        public InventoryItem playerWeapon;
+        public InventoryItem[] playerInventory;
+        public int playTime;
+        public float[] saveLocation;
 
+        public SaveData(string playerName, string roomName, int playerHealth, int playerExp, int playerMoney, InventoryItem playerArmor, InventoryItem playerWeapon, InventoryItem[] playerInventory, int playTime, Vector2 saveLocation)
+        {
+            this.playerName = playerName;
+            this.roomName = roomName;
+            this.playerHealth = playerHealth;
+            this.playerExp = playerExp;
+            this.playerMoney = playerMoney;
+            this.playerArmor = playerArmor;
+            this.playerWeapon = playerWeapon;
+            this.playerInventory = playerInventory;
+            this.playTime = playTime;
+            this.saveLocation = new []{saveLocation.x, saveLocation.y};
+        }
     }
 
     public static class Assets
@@ -53,6 +69,7 @@ public static class Beneath
         public static readonly AssetReference DialogBox = new AssetReference("Assets/Prefabs/UI/DialogBox.prefab");
         public static readonly AssetReference EscapeMenu = new AssetReference("Assets/Prefabs/UI/EscapeMenu.prefab");
         public static readonly AssetReference SaveMenu = new AssetReference("Assets/Prefabs/UI/SaveMenu.prefab");
+        public static readonly AssetReference ResumeMenu = new AssetReference("Assets/Prefabs/UI/ResumeMenu.prefab");
     }
 
     public static class TextHelpers
@@ -85,10 +102,12 @@ public static class Beneath
         public static void SaveProgress()
         {
             BinaryFormatter formatter = new BinaryFormatter();
+            SaveData progress = MakeSerializableProgress();
             string savePath = Application.persistentDataPath + "/beneath.data";
             FileStream stream = new FileStream(savePath, FileMode.Create);
-            formatter.Serialize(stream, MakeSerializableProgress());
+            formatter.Serialize(stream, progress);
             stream.Close();
+            Data.RestartStopwatch();
         }
 
         public static SaveData LoadProgress()
@@ -100,42 +119,41 @@ public static class Beneath
                 BinaryFormatter formatter = new BinaryFormatter();
                 FileStream stream = new FileStream(savePath, FileMode.Open);
 
-                SaveData loadedData = formatter.Deserialize(stream) as SaveData;
-                stream.Close();
-                return loadedData;
+                if (stream.CanRead && stream.Length > 0)
+                {
+                    SaveData loadedData = formatter.Deserialize(stream) as SaveData;
+                    stream.Close();
+                    return loadedData;
+                }
+
             }
             return null;
         }
 
         public static SaveData MakeSerializableProgress()
         {
-            return new SaveData();
+
+            int elapsedTime = 0;
+            
+            if (HasProgress())
+            {
+                elapsedTime = LoadProgress().playTime;
+            }
+
+            return new SaveData(Data.PlayerName, SceneManager.GetActiveScene().name, Data.PlayerHealth, Data.PlayerXP, Data.PlayerMoney, Data.PlayerArmor.GetItem(), Data.PlayerWeapon.GetItem(), new InventoryItem[0], elapsedTime + Data.ElapsedSessionTime, Data.player.GetPosition());
+
         }
         
         public static bool HasProgress() { return LoadProgress() != null; }
 
         public static void ResumeGame()
         {
+            Data.ResumeFromSave(LoadProgress());
+        }
 
-            if (HasProgress())
-            {
-
-                SaveData data = LoadProgress();
-                SceneManager.LoadSceneAsync(data.RoomName).completed += operation =>
-                {
-                    
-                };
-
-            }
-            else
-            {
-                SceneManager.LoadSceneAsync("Room 01").completed += operation =>
-                {
-                    Data.Spawn();
-                };
-                
-            }
-            
+        public static void BeginGameWithName(string name)
+        {
+            Data.BeginWithName(name);
         }
 
     }
@@ -192,13 +210,11 @@ public static class Beneath
 
     public static void QuitGame()
     {
-        
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
-        
     }
     
 }

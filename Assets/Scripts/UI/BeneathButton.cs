@@ -1,10 +1,5 @@
-﻿using Assets.Scripts.UI;
-using Interfaces.UI;
-using TMPro;
-using UI.Inventory;
-using UnityEngine;
+﻿using TMPro;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace UI
 {

@@ -1,7 +1,5 @@
-﻿using Assets.Scripts.UI;
-using Interfaces;
+﻿using Interfaces;
 using UI.Inventory.BottomView.Info;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Inventory
@@ -25,15 +23,15 @@ namespace UI.Inventory
         {
             for (int i = 0; i < Slots.Length; i++)
             {
-                if (Viewer.GetInventory().GetSlot(i) != null)
+                if (Beneath.Data.PlayerInventory.GetSlot(i) != null)
                 {
-                    Slots[i].SetHeldItem(Viewer.GetInventory().GetSlot(i).GetItem());
+                    Slots[i].SetHeldItem(Beneath.Data.PlayerInventory.GetSlot(i).GetItem());
                 }
             }
         }
-        public override void Open(ControllableCharacter character)
+        public override void Open()
         {
-            base.Open(character);
+            base.Open();
             RefreshSlots();
         }
 
@@ -78,7 +76,7 @@ namespace UI.Inventory
 
         public void DropItemFromActiveSlot(bool discard)
         {
-            Viewer.DropItemFromSlot(LastSubmit.GetComponent<SlotComponent>().slotIndex);
+            Beneath.Data.player.DropItemFromSlot(LastSubmit.GetComponent<SlotComponent>().slotIndex);
             RefreshSlots();
         }
 

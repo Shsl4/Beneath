@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UI.ResumeMenu;
+using UnityEngine;
 
 namespace UI.MainMenu
 {
@@ -6,7 +7,16 @@ namespace UI.MainMenu
     {
         protected override void ExecuteAction()
         {
-            Manager.OnEnter();
+
+            if (Beneath.SaveManager.HasProgress())
+            {
+                ((GameObject)Instantiate(Beneath.Assets.ResumeMenu.Asset)).GetComponent<ResumeMenuManager>().Open();
+            }
+            else
+            {
+                Manager.OnEnter();
+            }
+            
         }
     }
 }

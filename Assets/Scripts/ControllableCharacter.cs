@@ -1,26 +1,17 @@
 ﻿using System;
 using System.Collections;
-using Assets.Scripts.UI;
 using Attributes;
 using Environment;
-using Events;
 using Interfaces;
-using UI;
-using UI.EscapeMenu;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class ControllableCharacter : Character, IDamageable
+public class ControllableCharacter : Character, IDamageable, IInventory
 {
-
+    
     public float characterSpeed = 1.0f;
     public float characterRange = 1.5f;
-
-    public InventorySlot CharacterArmor { get; } = new InventorySlot();
-    public InventorySlot CharacterWeapon { get; } = new InventorySlot();
 
     private float _horizontalInput;
     private float _verticalInput;
@@ -28,20 +19,30 @@ public class ControllableCharacter : Character, IDamageable
     private bool _immune;
     private int _health;
     private int _maxHealth;
-
-    private EscapeMenuManager _escapeMenuManager;
-    private DialogBoxManager _dialogBoxManager;
-    private UIManager _activeUIManager;
-
+    
     private Camera _camera;
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _renderer;
     private BoxCollider2D _collider;
     private PlayerInput _playerInput;
     private CameraFader _fader;
+    private Animator _animator;
+    private ConfinerShapeFinder _confinerShapeFinder;
+    private static readonly int XInput = Animator.StringToHash("XInput");
+    private static readonly int YInput = Animator.StringToHash("YInput");
+    private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+
+    private static Inventory PlayerInventory => Beneath.Data.PlayerInventory;
+    private static InventorySlot CharacterArmor => Beneath.Data.PlayerArmor;
+    private static InventorySlot CharacterWeapon => Beneath.Data.PlayerWeapon;
     
-    private Inventory _characterInventory;
-    
+    public Vector2 GetPosition() { return _rigidbody.position; }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void Start()
     {
         _camera = GetComponent<Camera>();
@@ -49,17 +50,11 @@ public class ControllableCharacter : Character, IDamageable
         _renderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<BoxCollider2D>();
         _playerInput = GetComponent<PlayerInput>();
-        _escapeMenuManager = GetComponentInChildren<EscapeMenuManager>(true);
         _fader = GetComponent<CameraFader>();
-        _dialogBoxManager = GetComponentInChildren<DialogBoxManager>(true);
-        _characterInventory = new Inventory(8);
+        _animator = GetComponent<Animator>();
+        _confinerShapeFinder = GetComponentInChildren<ConfinerShapeFinder>(true);
     }
-
-    public void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
+    
     public void Update()
     {
         
@@ -67,35 +62,36 @@ public class ControllableCharacter : Character, IDamageable
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
+            _animator.SetBool(IsWalking, true);
+            _animator.SetFloat(XInput, move.x);
+            _animator.SetFloat(YInput, move.y);
             _lookDirection.Set(move.x, move.y);
             _lookDirection.Normalize();
+        }
+        else
+        {
+            _animator.SetBool(IsWalking, false);
         }
         
     }
 
+
     void FixedUpdate()
     {
-        if (!_activeUIManager)
+        if (_playerInput.inputIsActive)
         {
             UpdatePosition();
         }
     }
-
+    
     private void UpdatePosition()
     {
-
         Vector2 position = _rigidbody.position;
         position.x += 10.0f * _horizontalInput * Time.deltaTime * characterSpeed;
         position.y += 10.0f * _verticalInput * Time.deltaTime * characterSpeed;
         _rigidbody.MovePosition(position);
-
     }
-
-    public Inventory GetInventory()
-    {
-        return _characterInventory;
-    }
-
+    
     public int GetCharacterDamage()
     {
 
@@ -130,6 +126,9 @@ public class ControllableCharacter : Character, IDamageable
 
     }
 
+    public void EnableInput() { _playerInput.enabled = true;}
+    public void DisableInput() { _playerInput.enabled = false;}
+    
     public bool CanBeDamaged()
     {
         return _immune;
@@ -148,31 +147,31 @@ public class ControllableCharacter : Character, IDamageable
     public void DropItemFromSlot(int index)
     {
 
-        if (_characterInventory.GetSlot(index) != null)
+        if (PlayerInventory.GetSlot(index) != null)
         {
-            Beneath.DropItem(_rigidbody.position, _characterInventory.GetSlot(index).GetItem());
-            _characterInventory.GetSlot(index).Clear();
+            Beneath.DropItem(_rigidbody.position, PlayerInventory.GetSlot(index).GetItem());
+            PlayerInventory.GetSlot(index).Clear();
         }
     }
 
     public void ClearItemFromSlot(int index)
     {
-        if (_characterInventory.GetSlot(index) != null)
+        if (PlayerInventory.GetSlot(index) != null)
         {
-            _characterInventory.GetSlot(index).Clear();
+            PlayerInventory.GetSlot(index).Clear();
         }
     }
 
     public Beneath.EquipResult EquipWeapon(int index)
     {
 
-        if (GetInventory().GetSlot(index).GetItem() != null &&
-            GetInventory().GetSlot(index).GetItem().type == ItemTypes.Weapon)
+        if (Beneath.Data.PlayerInventory.GetSlot(index).GetItem() != null &&
+            Beneath.Data.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Weapon)
         {
 
             if (CharacterWeapon.GetItem() == null)
             {
-                CharacterWeapon.SetItem(GetInventory().GetSlot(index).GetItem());
+                CharacterWeapon.SetItem(Beneath.Data.PlayerInventory.GetSlot(index).GetItem());
                 ClearItemFromSlot(index);
                 return Beneath.EquipResult.Success;
             }
@@ -182,18 +181,19 @@ public class ControllableCharacter : Character, IDamageable
         }
 
         return Beneath.EquipResult.Error;
+        
     }
 
     public Beneath.EquipResult EquipArmor(int index)
     {
 
-        if (GetInventory().GetSlot(index).GetItem() != null &&
-            GetInventory().GetSlot(index).GetItem().type == ItemTypes.Armor)
+        if (Beneath.Data.PlayerInventory.GetSlot(index).GetItem() != null &&
+            Beneath.Data.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Armor)
         {
 
             if (CharacterArmor.GetItem() == null)
             {
-                CharacterArmor.SetItem(GetInventory().GetSlot(index).GetItem());
+                CharacterArmor.SetItem(Beneath.Data.PlayerInventory.GetSlot(index).GetItem());
                 ClearItemFromSlot(index);
                 return Beneath.EquipResult.Success;
             }
@@ -220,12 +220,12 @@ public class ControllableCharacter : Character, IDamageable
             return Beneath.UnEquipResult.Success;
         }
 
-        if (_characterInventory.IsFull())
+        if (PlayerInventory.IsFull())
         {
             return Beneath.UnEquipResult.InventoryFull;
         }
 
-        _characterInventory.GetNextEmptySlot().SetItem(CharacterArmor.GetItem());
+        PlayerInventory.GetNextEmptySlot().SetItem(CharacterArmor.GetItem());
         CharacterArmor.Clear();
         return Beneath.UnEquipResult.Success;
 
@@ -246,16 +246,18 @@ public class ControllableCharacter : Character, IDamageable
             return Beneath.UnEquipResult.Success;
         }
 
-        if (_characterInventory.IsFull())
+        if (PlayerInventory.IsFull())
         {
             return Beneath.UnEquipResult.InventoryFull;
         }
 
-        _characterInventory.GetNextEmptySlot().SetItem(CharacterWeapon.GetItem());
+        PlayerInventory.GetNextEmptySlot().SetItem(CharacterWeapon.GetItem());
         CharacterWeapon.Clear();
         return Beneath.UnEquipResult.Success;
 
     }
+
+    public Inventory GetInventory() { return Beneath.Data.PlayerInventory; }
 
     public bool PickupItem(InventoryItem item)
     {
@@ -263,9 +265,9 @@ public class ControllableCharacter : Character, IDamageable
         bool result = false;
         string message;
 
-        if (!GetInventory().IsFull())
+        if (!Beneath.Data.PlayerInventory.IsFull())
         {
-            if (GetInventory().GetNextEmptySlot().SetItem(item))
+            if (Beneath.Data.PlayerInventory.GetNextEmptySlot().SetItem(item))
             {
                 message = "You picked up \"" + item.name + "\".";
                 result = true;
@@ -280,19 +282,14 @@ public class ControllableCharacter : Character, IDamageable
             message = "You tried to pick up \"" + item.name + "\", but your inventory was full.";
         }
 
-        OpenDialogBoxWithText(message);
+        Beneath.Data.DialogBox.OpenWithText(message);
 
         return result;
     }
 
     public void OnInteract()
     {
-
-        if (_activeUIManager != null)
-        {
-            return;
-        }
-
+        
         Vector2 start = _rigidbody.position + Vector2.up * 0.2f;
         RaycastHit2D hit = Physics2D.Raycast(start, _lookDirection, characterRange, LayerMask.GetMask("Interaction"));
 
@@ -318,49 +315,7 @@ public class ControllableCharacter : Character, IDamageable
 
     public void OnEscape()
     {
-        
-        if (_activeUIManager)
-        {
-            return;
-        }
-
-        OpenUserInterface(_escapeMenuManager);
-    }
-
-    public void OpenUserInterface(UIManager master)
-    {
-
-        if (!_activeUIManager)
-        {
-            _activeUIManager = master;
-            _activeUIManager.Open(this);
-        }
-
-    }
-
-    public void OpenDialogBoxWithText(string text)
-    {
-
-        if (_activeUIManager)
-        {
-            return;
-        }
-
-        _activeUIManager = _dialogBoxManager;
-        _dialogBoxManager.OpenWithText(this, text);
-
-    }
-
-    public void CloseActiveInterface()
-    {
-
-        if (_activeUIManager != null)
-        {
-            _activeUIManager.Close();
-            _activeUIManager = null;
-
-        }
-
+        Beneath.Data.EscapeMenu.Open();
     }
 
     public int Damage(int damageAmount, GameObject source)
@@ -426,18 +381,18 @@ public class ControllableCharacter : Character, IDamageable
     private void OnSceneTravelled(string fromScene, string toScene, Vector2 fromLocation, Vector2 toLocation)
     {
         _rigidbody.position = toLocation;
-        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(toScene));
-        FindObjectOfType<RoomLeaver>()?.OnRoomEntered(fromScene, fromLocation);
+        //FindObjectOfType<RoomLinker>()?.OnRoomEntered(fromScene, fromLocation);
         _fader.FadeOut(0.25f);
+        _confinerShapeFinder.Refresh();
     }
 
     private IEnumerator TravelToScene(string toScene, Vector2 toLocation)
     {
-        
+        DontDestroyOnLoad(gameObject);
         _fader.FadeIn(0.25f);
         String fromScene = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(0.25f);
-        SceneManager.LoadSceneAsync(toScene, LoadSceneMode.Single).completed += operation =>
+        SceneManager.LoadSceneAsync(toScene).completed += operation =>
         {
             var location = _rigidbody.position;
             Vector2 entry = new Vector2(location.x, location.y);

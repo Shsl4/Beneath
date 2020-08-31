@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.UI;
-using UI;
+﻿using UI;
 using UnityEngine.EventSystems;
 
 namespace Dummies

@@ -926,8 +926,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 566.55, y: -32.399994}
-  m_SizeDelta: {x: 402.9, y: 64.79999}
+  m_AnchoredPosition: {x: 279.14996, y: -12.359997}
+  m_SizeDelta: {x: 211.29997, y: 24.719994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6017103291352488527
 CanvasRenderer:
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54
+  m_fontSize: 20.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54
+  m_fontSize: 20.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4374,7 +4374,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
+  m_fontSize: 18.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5334,7 +5334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85a6690a7754bc6b0369d412c961e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Viewer: {fileID: 0}
   LastSubmit: {fileID: 0}
   Source: {fileID: 0}
   FirstSelected: {fileID: 2105500664859333786}
@@ -5345,7 +5344,6 @@ MonoBehaviour:
   characterNameText: {fileID: 7688715595463550438}
   aButton: {fileID: 6678117066571688644}
   noButton: {fileID: 720538675509436441}
-  firstScene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
   playerClass: {fileID: 895001509811143442, guid: 0bb61c44a1f1c45409e307e612c5a689, type: 3}
 --- !u!1 &6096117127673925410
 GameObject:
@@ -5934,13 +5932,13 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  sizeRatio: 0.75
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 3
+  sizeRatio: 0.75
 --- !u!1 &7204722482900500460
 GameObject:
   m_ObjectHideFlags: 0
@@ -6512,8 +6510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 182.54999, y: -32.399994}
-  m_SizeDelta: {x: 365.09998, y: 64.79999}
+  m_AnchoredPosition: {x: 86.749985, y: -12.359997}
+  m_SizeDelta: {x: 173.49997, y: 24.719994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &905408621277102216
 CanvasRenderer:
@@ -6570,7 +6568,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54
+  m_fontSize: 20.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.UI;
-using Interfaces;
-using UI.Inventory.BottomView;
+﻿using Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

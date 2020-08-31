@@ -1,5 +1,4 @@
 ﻿using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace UI.Inventory.BottomView.Selection
 {
@@ -9,20 +8,19 @@ namespace UI.Inventory.BottomView.Selection
         protected override void ExecuteAction()
         {
 
-            ControllableCharacter Player = Manager.Viewer;
             SlotComponent Slot = Manager.LastSubmit.GetComponent<SlotComponent>();
             
             if (Slot.GetHeldItem().type == ItemTypes.Weapon)
             {
 
-                Beneath.EquipResult result = Player.EquipWeapon(Slot.slotIndex);
+                Beneath.EquipResult result = Beneath.Data.player.EquipWeapon(Slot.slotIndex);
                 string message = "";
                 
                 switch (result)
                 {
   
                     case Beneath.EquipResult.Success:
-                        message = "You equipped \"" + Player.CharacterWeapon.GetItem().name + "\".";
+                        message = "You equipped \"" + Beneath.Data.PlayerWeapon.GetItem().name + "\".";
                         break;
 
                     case Beneath.EquipResult.AlreadyEquipped:
@@ -42,14 +40,14 @@ namespace UI.Inventory.BottomView.Selection
             else if (Slot.GetHeldItem().type == ItemTypes.Armor)
             {
                     
-                Beneath.EquipResult result = Player.EquipArmor(Slot.slotIndex);
+                Beneath.EquipResult result = Beneath.Data.player.EquipArmor(Slot.slotIndex);
                 string message = "";
                 
                 switch (result)
                 {
   
                     case Beneath.EquipResult.Success:
-                        message = "You equipped \"" + Player.CharacterArmor.GetItem().name + "\".";
+                        message = "You equipped \"" + Beneath.Data.PlayerArmor.GetItem().name + "\".";
                         Manager.RefreshSlots();
                         break;
 

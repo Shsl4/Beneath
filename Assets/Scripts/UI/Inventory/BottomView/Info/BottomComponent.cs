@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using TMPro;
 using UI.Inventory.BottomView.Selection;
 using UnityEngine;
 
@@ -23,7 +22,6 @@ namespace UI.Inventory.BottomView.Info
                 
                 output += "Name: " + item.name + "\n\n";
                 output += item.FormatDescription();
-                output = output.ToUpper();
 
             }
             else

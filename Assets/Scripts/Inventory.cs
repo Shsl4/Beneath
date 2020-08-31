@@ -3,6 +3,7 @@ using Attributes;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
+[Serializable]
 public enum ItemTypes
 {
         

@@ -1,7 +1,4 @@
-﻿using Assets.Scripts.UI;
-using UnityEngine;
-
-namespace UI
+﻿namespace UI
 {
     
     public class DialogBoxManager : UIManager
@@ -11,9 +8,9 @@ namespace UI
 
         
         
-        public void OpenWithText(ControllableCharacter character, string text)
+        public void OpenWithText(string text)
         {
-            Open(character);
+            Open();
             TextView.RevealText(text);
         }
 

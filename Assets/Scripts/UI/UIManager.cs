@@ -2,14 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.Scripts.UI
+namespace UI
 {
     [RequireComponent(typeof(AudioSource))]
     public abstract class UIManager : MonoBehaviour
     {
         
-        [HideInInspector]
-        public ControllableCharacter Viewer;
         [HideInInspector]
         public GameObject LastSubmit;
         [HideInInspector]
@@ -37,16 +35,15 @@ namespace Assets.Scripts.UI
             
         }
 
-        public virtual void Open(ControllableCharacter character)
+        public virtual void Open()
         {
+            Beneath.Data.player?.DisableInput();
             gameObject.SetActive(true);
-            Viewer = character;
         }
         
         public virtual void Close()
         {
             gameObject.SetActive(false);
-            Viewer = null;
             LastSubmit = null;
 
             if (HasParent())
@@ -54,6 +51,10 @@ namespace Assets.Scripts.UI
                 GetFirstParent().EnableSelection();
                 EventSys.SetSelectedGameObject(GetFirstParent().LastSubmit);
                 GetFirstParent().LastSubmit = null;
+            }
+            else
+            {
+                Beneath.Data.player.EnableInput();
             }
         }
         
@@ -79,13 +80,9 @@ namespace Assets.Scripts.UI
                 EventSys.SetSelectedGameObject(LastSubmit);
                 LastSubmit = null;
             }
-            else if (HasParent())
-            {
-                Close();
-            }
             else
             {
-                Viewer.CloseActiveInterface();
+                Close();
             }
         }
 

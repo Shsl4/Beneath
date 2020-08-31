@@ -3,10 +3,8 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class BeneathGridLayout : LayoutGroup
+    public class BeneathSquareGridLayout : LayoutGroup
     {
-
-        public float sizeRatio = 1.0f;
         
         public enum Corner
         {
@@ -39,7 +37,12 @@ namespace UI
 
         [SerializeField] protected Vector2 m_CellSize = new Vector2(100, 100);
 
-        public Vector2 cellSize { get { return DetermineCellSize(m_CellSize); } set { SetProperty(ref m_CellSize, DetermineCellSize(value)); } }
+        public float cellLength
+        {
+            get => cellLength; set => SetProperty(ref m_CellSize, DetermineCellSize(new Vector2(value, value)));
+        }
+        
+        private Vector2 cellSize { get { return DetermineCellSize(m_CellSize); } set { SetProperty(ref m_CellSize, DetermineCellSize(value)); } }
 
         [SerializeField] protected Vector2 m_Spacing = Vector2.zero;
         
@@ -51,9 +54,11 @@ namespace UI
 
         [SerializeField] protected int m_ConstraintCount = 2;
         
+        public float sizeRatio = 1.0f;
+        
         public int constraintCount { get { return m_ConstraintCount; } set { SetProperty(ref m_ConstraintCount, Mathf.Max(1, value)); } }
 
-        protected BeneathGridLayout()
+        protected BeneathSquareGridLayout()
         {}
 
         #if UNITY_EDITOR

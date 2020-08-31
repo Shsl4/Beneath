@@ -2,7 +2,6 @@
 using Attributes;
 using Interfaces;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 public class PickupItem : MonoBehaviour, IInteractable, IIdentifiable, IInventoryItem
 {

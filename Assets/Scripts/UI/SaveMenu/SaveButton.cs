@@ -1,7 +1,6 @@
-﻿using UI;
-using UnityEngine.EventSystems;
+﻿using UnityEngine.EventSystems;
 
-namespace Assets.Scripts.UI.SaveMenu
+namespace UI.SaveMenu
 {
     public class SaveButton : BeneathButton<SaveMenuManager>
     {

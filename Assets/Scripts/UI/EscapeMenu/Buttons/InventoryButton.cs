@@ -8,7 +8,7 @@ namespace UI.EscapeMenu.Buttons
         {
             Manager.LastSubmit = gameObject;
             Manager.DisableSelection();
-            Manager.InventoryMgr.Open(Manager.Viewer);
+            Manager.InventoryMgr.Open();
         }
         
         public override void OnCancel(BaseEventData eventData)

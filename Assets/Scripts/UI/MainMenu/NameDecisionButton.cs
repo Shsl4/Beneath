@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace UI.MainMenu
+﻿namespace UI.MainMenu
 {
     public class NameDecisionButton : BeneathButton<MainMenuManager>
     {

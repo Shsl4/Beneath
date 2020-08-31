@@ -1,5 +1,4 @@
 ﻿using System;
-using Assets.Scripts.UI;
 using Interfaces;
 using UI.Inventory;
 
@@ -16,13 +15,13 @@ namespace UI.EscapeMenu.Equipment
         
         public void RefreshSlots()
         {
-            WeaponSlot.SetHeldItem(Viewer.CharacterWeapon.GetItem());
-            ArmorSlot.SetHeldItem(Viewer.CharacterArmor.GetItem());
+            WeaponSlot.SetHeldItem(Beneath.Data.PlayerWeapon.GetItem());
+            ArmorSlot.SetHeldItem(Beneath.Data.PlayerArmor.GetItem());
         }
 
-        public override void Open(ControllableCharacter character)
+        public override void Open()
         {
-            base.Open(character);
+            base.Open();
             RefreshSlots();
         }
 
@@ -37,7 +36,6 @@ namespace UI.EscapeMenu.Equipment
                 
                 output += "Name: " + item.name + "\n\n";
                 output += item.FormatDescription();
-                output = output.ToUpper();
 
             }
             else
@@ -57,13 +55,13 @@ namespace UI.EscapeMenu.Equipment
             
             if (LastSubmit == ArmorSlot.gameObject)
             {
-                itemName = Viewer.CharacterArmor.GetItem().name;
-                result = Viewer.UnEquipArmor(discard);
+                itemName = Beneath.Data.PlayerArmor.GetItem().name;
+                result = Beneath.Data.player.UnEquipArmor(discard);
             }
             else
             {
-                itemName = Viewer.CharacterWeapon.GetItem().name;
-                result = Viewer.UnEquipWeapon(discard);
+                itemName = Beneath.Data.PlayerWeapon.GetItem().name;
+                result = Beneath.Data.player.UnEquipWeapon(discard);
             }
 
             string message = "";

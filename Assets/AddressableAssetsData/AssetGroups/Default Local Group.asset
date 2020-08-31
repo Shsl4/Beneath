@@ -23,14 +23,14 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 1168bcd6164e1c74cbd76ffcc282625f
-    m_Address: Assets/Prefabs/UI/SaveMenu.prefab
+  - m_GUID: 1b19d4511ee8eaa49955ec6cba3aaf39
+    m_Address: Assets/Prefabs/UI/EscapeMenu.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 1b19d4511ee8eaa49955ec6cba3aaf39
-    m_Address: Assets/Prefabs/UI/EscapeMenu.prefab
+  - m_GUID: 295a15b80bc80374292a0003c1317b14
+    m_Address: Assets/Prefabs/UI/SaveMenu.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
@@ -43,6 +43,12 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 68a32aa7fb580054fbe7d835e2db42ce
     m_Address: Assets/Prefabs/UI/DialogBox.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 78128a91baf6a7c419bb5827d36fc910
+    m_Address: Assets/Prefabs/UI/ResumeMenu.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}

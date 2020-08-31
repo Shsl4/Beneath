@@ -3,16 +3,17 @@ using System.Collections;
 using Interfaces;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Environment
 {
 
     [RequireComponent(typeof(AudioSource), typeof(SpriteRenderer))]
-    public class DoorComponent : DialogComponent
+    public class DoorComponent : RoomLinker, IInteractable
     {
 
+        [TextArea] public string openText = "The door opened.";
         [TextArea] public string closedText;
+        
         public bool openedByDefault;
         public Sprite openedSprite;
         public Sprite closedSprite;
@@ -40,36 +41,27 @@ namespace Environment
             }
         }
 
-        public override void Interact(GameObject source)
+        public void Interact(GameObject source)
         {
             if (source.GetComponent<ControllableCharacter>() != null)
             {
                 
-                ControllableCharacter character = source.GetComponent<ControllableCharacter>();
-
                 if (IsOpened)
                 {
-/*
-                    if (!travelToScene)
-                    {
-                        return;
-                    }
-                    
-                    character.TravelToScene(travelToScene.name);
-                    return; */
+                    Travel();
+                    return;
                 }
                 
                 if (CanOpen())
                 {
 
-                    if (String.IsNullOrEmpty(textToDisplay))
+                    if (String.IsNullOrEmpty(openText))
                     {
-                        textToDisplay = "The door opened"; 
+                        openText = "The door opened"; 
                     }
-
-
+                    
                     spriteRenderer.sprite = openedSprite;
-                    StartCoroutine(DisplayText(character, openSound, textToDisplay));
+                    StartCoroutine(DisplayText(openSound, openText));
                     IsOpened = true;
 
                 }
@@ -81,15 +73,15 @@ namespace Environment
                         closedText = "It's closed.";
                     }
                     
-                    StartCoroutine(DisplayText(character, closedSound, closedText));
+                    StartCoroutine(DisplayText(closedSound, closedText));
                     
                 }
             }
         }
 
-        protected virtual bool CanOpen() { return false; }
+        protected virtual bool CanOpen() { return true; }
 
-        IEnumerator DisplayText(ControllableCharacter character, AudioClip clip, string text)
+        IEnumerator DisplayText(AudioClip clip, string text)
         {
             
             if (clip)
@@ -98,9 +90,18 @@ namespace Environment
                 yield return new WaitForSeconds(clip.length);
             }
             
-            character.OpenDialogBoxWithText(text);
+            Beneath.Data.DialogBox.OpenWithText(text);
 
         }
 
     }
+    
+    #if UNITY_EDITOR
+    
+    [CustomEditor(typeof(DoorComponent))]
+    [CanEditMultipleObjects]
+    public class DoorComponentEditor : RoomLinkerEditor
+    {
+    }
+    #endif
 }

@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -1004425761199627622, guid: 1cfe74aa582db4dd18e251b6c9e4c4be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -219,13 +219,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87302ba28bb44a6db0cac9ba24b57783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textToDisplay: The Door Opened.
+  sceneName: 
+  travelPosition: {x: 0, y: 0}
+  openText: The door opened.
   closedText: It's Closed
   openedByDefault: 0
   openedSprite: {fileID: -1004425761199627622, guid: 1cfe74aa582db4dd18e251b6c9e4c4be, type: 3}
   closedSprite: {fileID: -3624438160627767918, guid: 1cfe74aa582db4dd18e251b6c9e4c4be, type: 3}
-  travelToScene: {fileID: 102900000, guid: b5f1627c41a724004bb74db9e8acf760, type: 3}
-  closedSound: {fileID: 0}
+  closedSound: {fileID: 8300000, guid: c4d219d40260e904d90b55b0df54b874, type: 3}
   openSound: {fileID: 0}
   spriteRenderer: {fileID: 0}
   audioSource: {fileID: 0}

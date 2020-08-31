@@ -1,11 +1,7 @@
 ﻿using System;
-using Assets.Scripts.UI;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.SceneManagement;
 
 namespace UI.MainMenu
 {
@@ -136,7 +132,7 @@ namespace UI.MainMenu
             _fader.fadeToColor = Color.white;
             _fader.FadeIn(5.0f);
             _eventSystem.SetSelectedGameObject(null);
-            Beneath.DelayThen(this, 5.0f, Beneath.SaveManager.ResumeGame);
+            Beneath.DelayThen(this, 5.0f, (() => Beneath.SaveManager.BeginGameWithName(_playerName)));
         }
         
         public override void NavigateBack() { }
