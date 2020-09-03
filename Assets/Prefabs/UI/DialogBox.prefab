@@ -253,10 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5d578e201b746c081b977022c932287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Viewer: {fileID: 0}
-  LastSubmit: {fileID: 0}
-  Source: {fileID: 0}
-  FirstSelected: {fileID: 3030360588463110879}
+  source: {fileID: 0}
+  firstSelected: {fileID: 3030360588463110879}
 --- !u!1 &3030360588463110879
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,10 +388,15 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3421742066956852755}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
-  TalkSound: {fileID: 8300000, guid: 6f88a72747092324a8e269be82b0cdd0, type: 3}
-  RevealSpeed: 1
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 1
+  textSound: {fileID: 8300000, guid: 6f88a72747092324a8e269be82b0cdd0, type: 3}
+  revealSpeed: 1
   lineCount: 4
 --- !u!1 &7872962426798672899
 GameObject:

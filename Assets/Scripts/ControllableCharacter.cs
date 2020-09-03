@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Attributes;
-using Environment;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class ControllableCharacter : Character, IDamageable, IInventory
+public class ControllableCharacter : Character, IInventory
 {
     
     public float characterSpeed = 1.0f;
@@ -129,21 +127,6 @@ public class ControllableCharacter : Character, IDamageable, IInventory
     public void EnableInput() { _playerInput.enabled = true;}
     public void DisableInput() { _playerInput.enabled = false;}
     
-    public bool CanBeDamaged()
-    {
-        return _immune;
-    }
-
-    public int GetHealth()
-    {
-        return _health;
-    }
-
-    public int GetMaxHealth()
-    {
-        return _maxHealth;
-    }
-
     public void DropItemFromSlot(int index)
     {
 
@@ -292,10 +275,7 @@ public class ControllableCharacter : Character, IDamageable, IInventory
         
         Vector2 start = _rigidbody.position + Vector2.up * 0.2f;
         RaycastHit2D hit = Physics2D.Raycast(start, _lookDirection, characterRange, LayerMask.GetMask("Interaction"));
-
-        Debug.DrawRay(new Vector3(start.x, start.y, 0),
-            new Vector3(_lookDirection.x, _lookDirection.y, 0) * characterRange, Color.red, 2.0f);
-
+        
         if (hit.collider != null && hit.collider.gameObject.GetComponent<IInteractable>() != null)
         {
             IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
@@ -317,86 +297,26 @@ public class ControllableCharacter : Character, IDamageable, IInventory
     {
         Beneath.Data.EscapeMenu.Open();
     }
-
-    public int Damage(int damageAmount, GameObject source)
-    {
-
-        int inflictedDamage = 0;
-
-        if (CanBeDamaged())
-        {
-            if (_health - damageAmount <= 0)
-            {
-                inflictedDamage = damageAmount - _health;
-                _health = 0;
-                OnDeath();
-            }
-            else
-            {
-                _health -= damageAmount;
-                inflictedDamage = damageAmount;
-            }
-        }
-
-        return inflictedDamage;
-
-    }
-
-    public int Heal(int healAmount, GameObject source)
-    {
-
-        int givenHealth;
-
-        if (_health + healAmount >= _maxHealth)
-        {
-            givenHealth = _health - healAmount;
-            _health = _maxHealth;
-        }
-        else
-        {
-            _health += healAmount;
-            givenHealth = healAmount;
-        }
-
-        return givenHealth;
-
-    }
-
-    private void OnDeath()
-    {
-
-
-    }
-
-    public void TravelToScene(string scene)
-    {
-        TravelToSceneAtLocation(scene, new Vector2(0, 0));
-    }
     
     public void TravelToSceneAtLocation(string scene, Vector2 location)
     {
         StartCoroutine(TravelToScene(scene, location));
     }
 
-    private void OnSceneTravelled(string fromScene, string toScene, Vector2 fromLocation, Vector2 toLocation)
+    private void OnSceneTravelled(Vector2 toLocation)
     {
         _rigidbody.position = toLocation;
-        //FindObjectOfType<RoomLinker>()?.OnRoomEntered(fromScene, fromLocation);
         _fader.FadeOut(0.25f);
         _confinerShapeFinder.Refresh();
     }
 
     private IEnumerator TravelToScene(string toScene, Vector2 toLocation)
     {
-        DontDestroyOnLoad(gameObject);
         _fader.FadeIn(0.25f);
-        String fromScene = SceneManager.GetActiveScene().name;
         yield return new WaitForSeconds(0.25f);
         SceneManager.LoadSceneAsync(toScene).completed += operation =>
         {
-            var location = _rigidbody.position;
-            Vector2 entry = new Vector2(location.x, location.y);
-            OnSceneTravelled(fromScene,toScene, entry, toLocation);
+            OnSceneTravelled(toLocation);
         };
 
     }

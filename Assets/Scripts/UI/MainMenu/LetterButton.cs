@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using UI.General;
 using UnityEngine;
 
 namespace UI.MainMenu
@@ -42,7 +43,7 @@ namespace UI.MainMenu
             });
         }
         
-        protected override void ExecuteAction()
+        protected override void SubmitAction()
         {
 
             switch (buttonType)

@@ -5,8 +5,8 @@ namespace UI.Inventory.BottomView.Selection
     public class SelectionComponent : MonoBehaviour
     {
 
-        public UseButton Use => GetComponentInChildren<UseButton>();
-        public DiscardButton Discard => GetComponentInChildren<DiscardButton>();
+        public UseButton UseBeneath => GetComponentInChildren<UseButton>();
+        public DiscardButton DiscardBeneath => GetComponentInChildren<DiscardButton>();
         
     }
 }

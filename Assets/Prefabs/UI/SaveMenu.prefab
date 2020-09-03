@@ -502,9 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e91623c9a9cb2e44bfa9897a6ba74ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LastSubmit: {fileID: 0}
-  Source: {fileID: 0}
-  FirstSelected: {fileID: 3914630961849365628}
+  source: {fileID: 0}
+  firstSelected: {fileID: 3914630961849365628}
   nameText: {fileID: 1791877595055251721}
   levelText: {fileID: 6738077838280870332}
   timeText: {fileID: 8146437917201723968}
@@ -521,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 3914630961849365628}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!114 &8846261930831153310
@@ -703,7 +702,7 @@ MonoBehaviour:
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 3699977436018509789}
+    m_SelectOnRight: {fileID: 8966971139962693613}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -726,8 +725,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5642615420537240729}
-  SelectSound: {fileID: 8300000, guid: 13ab2069d3f90cc438161da4ef10578b, type: 3}
-  SubmitSound: {fileID: 8300000, guid: b5474ecd7462ec7478c25fc516942043, type: 3}
+  selectSound: {fileID: 8300000, guid: 13ab2069d3f90cc438161da4ef10578b, type: 3}
+  submitSound: {fileID: 8300000, guid: b5474ecd7462ec7478c25fc516942043, type: 3}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 2
+  submitType: 0
+  allowBackNavigation: 1
 --- !u!1 &3915502155924478675
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,8 +945,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8282026357687530172}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 2
+  submitType: 2
+  allowBackNavigation: 1
 --- !u!1 &4934820018052471563
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,7 +963,7 @@ GameObject:
   - component: {fileID: 8771010992793556722}
   - component: {fileID: 6223052483608160704}
   - component: {fileID: 9130464474694537778}
-  - component: {fileID: 3699977436018509789}
+  - component: {fileID: 8966971139962693613}
   m_Layer: 0
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -1080,7 +1089,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3699977436018509789
+--- !u!114 &8966971139962693613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1089,7 +1098,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4934820018052471563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f845ae7b449b142129e4a8b0a6881183, type: 3}
+  m_Script: {fileID: 11500000, guid: 30d0100f2ce1fec418e706413364fcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1120,8 +1129,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 9130464474694537778}
-  SelectSound: {fileID: 8300000, guid: 13ab2069d3f90cc438161da4ef10578b, type: 3}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 8300000, guid: 13ab2069d3f90cc438161da4ef10578b, type: 3}
+  submitSound: {fileID: 8300000, guid: b5474ecd7462ec7478c25fc516942043, type: 3}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 2
+  submitType: 2
+  allowBackNavigation: 1
 --- !u!1 &4982192311459583431
 GameObject:
   m_ObjectHideFlags: 0

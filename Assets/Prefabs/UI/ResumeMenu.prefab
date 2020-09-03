@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3253307017962129921}
   - component: {fileID: 3475275214253171595}
   - component: {fileID: 2303572915958470049}
-  - component: {fileID: 7277915452241961389}
+  - component: {fileID: 8114322651539946151}
   m_Layer: 0
   m_Name: ResetButton
   m_TagString: Untagged
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7277915452241961389
+--- !u!114 &8114322651539946151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,13 +144,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1246365266642602555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f845ae7b449b142129e4a8b0a6881183, type: 3}
+  m_Script: {fileID: 11500000, guid: 30d0100f2ce1fec418e706413364fcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 6912472873679955602}
+    m_SelectOnDown: {fileID: 4608482242895878590}
     m_SelectOnLeft: {fileID: 8258098203674033218}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -175,8 +175,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2303572915958470049}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
 --- !u!1 &1791706717015643146
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,9 +726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f26c4cd3c264d20930873bfd81c6777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LastSubmit: {fileID: 0}
-  Source: {fileID: 0}
-  FirstSelected: {fileID: 5096908067501461043}
+  source: {fileID: 0}
+  firstSelected: {fileID: 5096908067501461043}
   nameText: {fileID: 1791877595055251721}
   levelText: {fileID: 6738077838280870332}
   timeText: {fileID: 8146437917201723968}
@@ -1050,9 +1054,9 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 6912472873679955602}
+    m_SelectOnDown: {fileID: 4608482242895878590}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 7277915452241961389}
+    m_SelectOnRight: {fileID: 8114322651539946151}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1075,8 +1079,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 615339811506398920}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
 --- !u!1 &6425635283023206858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,7 +1365,7 @@ GameObject:
   - component: {fileID: 8965086320142870877}
   - component: {fileID: 998737823513682496}
   - component: {fileID: 7284194133369926790}
-  - component: {fileID: 6912472873679955602}
+  - component: {fileID: 4608482242895878590}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -1480,7 +1489,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6912472873679955602
+--- !u!114 &4608482242895878590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1489,15 +1498,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8562997164235797996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f845ae7b449b142129e4a8b0a6881183, type: 3}
+  m_Script: {fileID: 11500000, guid: 30d0100f2ce1fec418e706413364fcdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 8258098203674033218}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 8258098203674033218}
-    m_SelectOnRight: {fileID: 7277915452241961389}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1520,5 +1529,10 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7284194133369926790}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0

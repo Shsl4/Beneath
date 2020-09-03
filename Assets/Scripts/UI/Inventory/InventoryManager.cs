@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using UI.General;
 using UI.Inventory.BottomView.Info;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ namespace UI.Inventory
     {
         private SlotComponent[] Slots => GetComponentsInChildren<SlotComponent>();
         public BottomComponent Bottom => GetComponentInChildren<BottomComponent>();
+        
+        private SlotComponent _activeSlot;
         
         protected override void Awake()
         {
@@ -38,23 +41,33 @@ namespace UI.Inventory
         public override void EnableSelection()
         {
 
-            Bottom.Selection.Use.interactable = true;
-            Bottom.Selection.Discard.interactable = true;
+            Bottom.Selection.UseBeneath.interactable = true;
+            Bottom.Selection.DiscardBeneath.interactable = true;
 
         }
 
         public override void DisableSelection()
         {
 
-            Bottom.Selection.Use.interactable = false;
-            Bottom.Selection.Discard.interactable = false;
+            Bottom.Selection.UseBeneath.interactable = false;
+            Bottom.Selection.DiscardBeneath.interactable = false;
 
         }
 
         public void JumpToSelection()
         {
             EnableSelection();
-            Bottom.Selection.Use.gameObject.GetComponent<Selectable>().Select();
+            Bottom.Selection.UseBeneath.gameObject.GetComponent<Selectable>().Select();
+        }
+
+        public void SetActiveSlot(SlotComponent slot)
+        {
+            _activeSlot = slot;
+        }
+
+        public SlotComponent GetActiveSlot()
+        {
+            return _activeSlot;
         }
 
         public void RefreshInfoFromSlot(SlotComponent slot)
@@ -65,18 +78,18 @@ namespace UI.Inventory
             if (slot.GetHeldItem() != null && (slot.GetHeldItem().type == ItemTypes.Armor || slot.GetHeldItem().type == ItemTypes.Weapon))
             {
                 
-                Bottom.Selection.Use.TextBox.SetText("EQUIP");
+                Bottom.Selection.UseBeneath.TextBox.SetText("EQUIP");
                 
             }
             else
             {
-                Bottom.Selection.Use.TextBox.SetText("USE");
+                Bottom.Selection.UseBeneath.TextBox.SetText("USE");
             }
         }
 
         public void DropItemFromActiveSlot(bool discard)
         {
-            Beneath.Data.player.DropItemFromSlot(LastSubmit.GetComponent<SlotComponent>().slotIndex);
+            Beneath.Data.player.DropItemFromSlot(_activeSlot.GetComponent<SlotComponent>().slotIndex);
             RefreshSlots();
         }
 
@@ -86,14 +99,18 @@ namespace UI.Inventory
             if (select)
             {
                 Bottom.TextView.SelectAndReveal(text);
-
             }
             else
             {
                 Bottom.TextView.RevealText(text);
-
             }
             
+        }
+
+        public void DisplayEnded()
+        {
+            _activeSlot.Select();
+            _activeSlot = null;
         }
     }
     

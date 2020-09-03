@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using UI.General;
 
 namespace UI.ResumeMenu
 {
-    public class ContinueButton : BeneathButton<ResumeMenuManager>
+    public class ContinueButton : BeneathButton
     {
-        protected override void ExecuteAction()
+        protected override void SubmitAction()
         {
             Beneath.SaveManager.ResumeGame();
         }

@@ -228,5 +228,6 @@ MonoBehaviour:
   closedSprite: {fileID: -3624438160627767918, guid: 1cfe74aa582db4dd18e251b6c9e4c4be, type: 3}
   closedSound: {fileID: 8300000, guid: c4d219d40260e904d90b55b0df54b874, type: 3}
   openSound: {fileID: 0}
+  InvokeIndex: 0
   spriteRenderer: {fileID: 0}
   audioSource: {fileID: 0}

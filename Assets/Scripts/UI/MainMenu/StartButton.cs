@@ -1,8 +1,10 @@
-﻿namespace UI.MainMenu
+﻿using UI.General;
+
+namespace UI.MainMenu
 {
     public class StartButton : BeneathButton<MainMenuManager>
     {
-        protected override void ExecuteAction()
+        protected override void SubmitAction()
         {
             Manager.OnStart();
         }

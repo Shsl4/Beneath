@@ -1,6 +1,8 @@
 ﻿using UI.EscapeMenu.Buttons;
 using UI.EscapeMenu.Equipment;
+using UI.General;
 using UI.Inventory;
+using UnityEngine.UI;
 
 namespace UI.EscapeMenu
 {
@@ -12,11 +14,11 @@ namespace UI.EscapeMenu
         public StatsManager StatsMgr => GetComponentInChildren<StatsManager>(true);
         public SettingsManager SettingsMgr => GetComponentInChildren<SettingsManager>(true);
 
-        public BeneathButton<EscapeMenuManager> InventoryBtn => GetComponentInChildren<InventoryButton>();
-        public BeneathButton<EscapeMenuManager> EquipmentBtn => GetComponentInChildren<EquipmentButton>();
-        public BeneathButton<EscapeMenuManager> StatsBtn => GetComponentInChildren<StatsButton>();
-        public BeneathButton<EscapeMenuManager> SettingsBtn => GetComponentInChildren<SettingsButton>();
-        public BeneathButton<EscapeMenuManager> ExitBtn => GetComponentInChildren<QuitButton>();
+        public Selectable InventoryBtn;
+        public Selectable EquipmentBtn;
+        public Selectable StatsBtn;
+        public Selectable SettingsBtn;
+        public Selectable ExitBtn;
         
         public override void EnableSelection()
         {

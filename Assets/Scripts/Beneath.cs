@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public static class Beneath
 {
@@ -96,7 +95,7 @@ public static class Beneath
         }
         
     }
-    
+
     public static class SaveManager
     {
         public static void SaveProgress()
@@ -140,7 +139,7 @@ public static class Beneath
                 elapsedTime = LoadProgress().playTime;
             }
 
-            return new SaveData(Data.PlayerName, SceneManager.GetActiveScene().name, Data.PlayerHealth, Data.PlayerXP, Data.PlayerMoney, Data.PlayerArmor.GetItem(), Data.PlayerWeapon.GetItem(), new InventoryItem[0], elapsedTime + Data.ElapsedSessionTime, Data.player.GetPosition());
+            return new SaveData(Data.PlayerName, SceneManager.GetActiveScene().name, Data.PlayerHealth, Data.PlayerXp, Data.PlayerMoney, Data.PlayerArmor.GetItem(), Data.PlayerWeapon.GetItem(), new InventoryItem[0], elapsedTime + Data.ElapsedSessionTime, Data.player.GetPosition());
 
         }
         
@@ -215,6 +214,22 @@ public static class Beneath
 #else
         Application.Quit();
 #endif
+    }
+
+    public static void DebugLog(string text)
+    {
+        Debug.Log(text);
+    }
+    
+    public static bool IsSubclassOfRawGeneric(Type generic, Type toCheck) {
+        while (toCheck != null && toCheck != typeof(object)) {
+            var cur = toCheck.IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
+            if (generic == cur) {
+                return true;
+            }
+            toCheck = toCheck.BaseType;
+        }
+        return false;
     }
     
 }

@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using UI.General;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -26,12 +27,7 @@ namespace UI.Inventory
             }
 
         }
-
-        public override void OnCancel(BaseEventData eventData)
-        {
-            Manager.NavigateBack();
-        }
-
+        
         public InventoryItem GetHeldItem()
         {
             return _heldItem;
@@ -47,16 +43,17 @@ namespace UI.Inventory
             }
         }
 
-        protected override void ExecuteAction()
+        protected override void SubmitAction()
         {
             if (_heldItem != null)
             {
-                Manager.LastSubmit = gameObject;
                 if (Manager is ISlotEventResponder responder)
                 {
+                    responder.SetActiveSlot(this);
                     responder.JumpToSelection();
                 }
             }        
         }
     }
+    
 }

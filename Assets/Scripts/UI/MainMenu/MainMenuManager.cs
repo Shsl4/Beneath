@@ -1,5 +1,6 @@
 ﻿using System;
 using TMPro;
+using UI.General;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -101,7 +102,7 @@ namespace UI.MainMenu
             
             _fader.FadeIn(0.5f);
             _eventSystem.SetSelectedGameObject(null);
-            GetComponentInChildren<ZoomingName>(true).ActualName = _playerName;
+            GetComponentInChildren<ZoomingName>(true).actualName = _playerName;
             Beneath.DelayThen(this, 0.5f, () =>
             {
                 nameView.SetActive(false);
@@ -135,6 +136,6 @@ namespace UI.MainMenu
             Beneath.DelayThen(this, 5.0f, (() => Beneath.SaveManager.BeginGameWithName(_playerName)));
         }
         
-        public override void NavigateBack() { }
     }
+    
 }

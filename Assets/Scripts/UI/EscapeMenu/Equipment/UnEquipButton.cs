@@ -1,24 +1,24 @@
 using Interfaces;
-using UnityEngine.EventSystems;
+using UI.General;
 
 namespace UI.EscapeMenu.Equipment
 {
     public class UnEquipButton : BeneathButton<EquipmentManager>
     {
-        protected override void ExecuteAction()
+        protected override void SubmitAction()
         {
+            Manager.DropItemFromActiveSlot(false);
+        }
+
+        protected override void CancelAction()
+        {
+            
             if (Manager is ISlotEventResponder responder)
             {
-                responder.DropItemFromActiveSlot(false);
+                responder.GetActiveSlot()?.Select();
+                Manager.DisableSelection();
             }
+            
         }
-        
-        public override void OnCancel(BaseEventData eventData)
-        {
-            Manager.EventSys.SetSelectedGameObject(Manager.LastSubmit);
-            Manager.LastSubmit = null;
-            Manager.DisableSelection();
-        }
-        
     }
 }

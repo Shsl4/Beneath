@@ -1,5 +1,4 @@
 ﻿using Cinemachine;
-using UnityEngine;
 
 public class ConfinerShapeFinder : CinemachineConfiner
 {
@@ -14,7 +13,7 @@ public class ConfinerShapeFinder : CinemachineConfiner
     {
         if (FindObjectOfType<CameraConfinerShape>())
         {
-            m_BoundingShape2D = FindObjectOfType<CameraConfinerShape>().Collider2D;
+            m_BoundingShape2D = FindObjectOfType<CameraConfinerShape>().polygonCollider;
             InvalidatePathCache();
         }
     }

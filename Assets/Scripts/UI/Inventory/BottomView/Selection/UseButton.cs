@@ -1,19 +1,19 @@
-﻿using UnityEngine.EventSystems;
+﻿using UI.General;
 
 namespace UI.Inventory.BottomView.Selection
 {
     public class UseButton : BeneathButton<InventoryManager>
     {
         
-        protected override void ExecuteAction()
+        protected override void SubmitAction()
         {
 
-            SlotComponent Slot = Manager.LastSubmit.GetComponent<SlotComponent>();
+            SlotComponent slot = Manager.GetActiveSlot().GetComponent<SlotComponent>();
             
-            if (Slot.GetHeldItem().type == ItemTypes.Weapon)
+            if (slot.GetHeldItem().type == ItemTypes.Weapon)
             {
 
-                Beneath.EquipResult result = Beneath.Data.player.EquipWeapon(Slot.slotIndex);
+                Beneath.EquipResult result = Beneath.Data.player.EquipWeapon(slot.slotIndex);
                 string message = "";
                 
                 switch (result)
@@ -24,11 +24,11 @@ namespace UI.Inventory.BottomView.Selection
                         break;
 
                     case Beneath.EquipResult.AlreadyEquipped:
-                        message = "You tried to equip \"" + Slot.GetHeldItem().name + "\", but a weapon was already equipped...";
+                        message = "You tried to equip \"" + slot.GetHeldItem().name + "\", but a weapon was already equipped...";
                         break;
                     
                     case Beneath.EquipResult.Error:
-                        message = "You tried to equip \"" + Slot.GetHeldItem().name + "\", but it failed...";
+                        message = "You tried to equip \"" + slot.GetHeldItem().name + "\", but it failed...";
                         break;
                     
                 }
@@ -37,10 +37,10 @@ namespace UI.Inventory.BottomView.Selection
                 Manager.Bottom.TextView.SelectAndReveal(message);
 
             }          
-            else if (Slot.GetHeldItem().type == ItemTypes.Armor)
+            else if (slot.GetHeldItem().type == ItemTypes.Armor)
             {
                     
-                Beneath.EquipResult result = Beneath.Data.player.EquipArmor(Slot.slotIndex);
+                Beneath.EquipResult result = Beneath.Data.player.EquipArmor(slot.slotIndex);
                 string message = "";
                 
                 switch (result)
@@ -52,11 +52,11 @@ namespace UI.Inventory.BottomView.Selection
                         break;
 
                     case Beneath.EquipResult.AlreadyEquipped:
-                        message = "You tried to equip \"" + Slot.GetHeldItem().name + "\", but an armor was already equipped...";
+                        message = "You tried to equip \"" + slot.GetHeldItem().name + "\", but an armor was already equipped...";
                         break;
                     
                     case Beneath.EquipResult.Error:
-                        message = "You tried to equip \"" + Slot.GetHeldItem().name + "\", but it failed...";
+                        message = "You tried to equip \"" + slot.GetHeldItem().name + "\", but it failed...";
                         break;
                 }
                 
@@ -68,12 +68,10 @@ namespace UI.Inventory.BottomView.Selection
             Manager.RefreshSlots();
             
         }
-        
-        public override void OnCancel(BaseEventData eventData)
+
+        protected override void CancelAction()
         {
-            Manager.EventSys.SetSelectedGameObject(Manager.LastSubmit);
-            Manager.LastSubmit = null;
-            Manager.DisableSelection();
+            Manager.GetActiveSlot().Select();
         }
     }
 }

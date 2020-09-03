@@ -14,10 +14,10 @@ public class DataHolder : MonoBehaviour
 {
     
     public string PlayerName { get; private set; }
-    public int PlayerXP { get; private set; }        
+    public int PlayerXp { get; private set; }        
     public int PlayerHealth { get; private set;}        
     public int PlayerMoney { get; private set; }        
-    public int ElapsedSessionTime { get => _stopwatch.Elapsed.Seconds; }
+    public int ElapsedSessionTime => _stopwatch.Elapsed.Seconds;
     public InventorySlot PlayerArmor { get; } = new InventorySlot();
     public InventorySlot PlayerWeapon { get; } = new InventorySlot();
     public Inventory PlayerInventory { get; } = new Inventory(8);
@@ -56,6 +56,7 @@ public class DataHolder : MonoBehaviour
     {
         
         DontDestroyOnLoad(gameObject);
+        
         Beneath.Data = this;
         
         Beneath.Assets.Item.LoadAssetAsync<GameObject>();
@@ -77,7 +78,7 @@ public class DataHolder : MonoBehaviour
         PlayerHealth = data.playerHealth;
         PlayerName = data.playerName;
         PlayerMoney = data.playerMoney;
-        PlayerXP = data.playerExp;
+        PlayerXp = data.playerExp;
 
         for (int i = 0; i < data.playerInventory.Length; i++) { PlayerInventory.GetSlot(i).SetItem(data.playerInventory[i]); }
 
@@ -121,6 +122,52 @@ public class DataHolder : MonoBehaviour
         return inventoryItems;
         
     }
+    
+    /*
+     *     public int Damage(int damageAmount, GameObject source)
+    {
+
+        int inflictedDamage = 0;
+
+        if (CanBeDamaged())
+        {
+            if (_health - damageAmount <= 0)
+            {
+                inflictedDamage = damageAmount - _health;
+                _health = 0;
+                OnDeath();
+            }
+            else
+            {
+                _health -= damageAmount;
+                inflictedDamage = damageAmount;
+            }
+        }
+
+        return inflictedDamage;
+
+    }
+
+    public int Heal(int healAmount, GameObject source)
+    {
+
+        int givenHealth;
+
+        if (_health + healAmount >= _maxHealth)
+        {
+            givenHealth = _health - healAmount;
+            _health = _maxHealth;
+        }
+        else
+        {
+            _health += healAmount;
+            givenHealth = healAmount;
+        }
+
+        return givenHealth;
+
+    }
+     */
     
 #if UNITY_EDITOR
     [CustomEditor(typeof(DataHolder))]

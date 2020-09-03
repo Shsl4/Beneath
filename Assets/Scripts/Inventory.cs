@@ -1,7 +1,6 @@
 ﻿using System;
 using Attributes;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 [Serializable]
 public enum ItemTypes
@@ -80,9 +79,6 @@ public class InventorySlot
         return true;
 
     }
-
-    public InventorySlot() {}
-
 }
     
 public class Inventory

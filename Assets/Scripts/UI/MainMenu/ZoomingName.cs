@@ -6,7 +6,7 @@ namespace UI.MainMenu
     public class ZoomingName : MonoBehaviour
     {
 
-        public string ActualName = "";
+        public string actualName = "";
         private TMP_Text _text;
         private Vector2 _startingPos;
         private RectTransform _rectTransform;
@@ -23,7 +23,7 @@ namespace UI.MainMenu
             
         }
 
-        private float _currentScale = 0.0f;
+        private float _currentScale;
         private void OnGUI()
         {
        
@@ -43,14 +43,14 @@ namespace UI.MainMenu
                 var position = _rectTransform.anchoredPosition;
                 _startingPos = new Vector2(position.x, position.y);
             });
-            _text.text = ActualName;
+            _text.text = actualName;
         }
 
         private void OnEnable()
         {
             _currentScale = 0.0f;
             if (!_text) { return; }
-            _text.text = ActualName;
+            _text.text = actualName;
         }
     }
 }

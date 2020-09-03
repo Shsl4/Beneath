@@ -1,4 +1,6 @@
-﻿namespace UI.EscapeMenu
+﻿using UI.General;
+
+namespace UI.EscapeMenu
 {
     public class StatsManager : UIManager
     {

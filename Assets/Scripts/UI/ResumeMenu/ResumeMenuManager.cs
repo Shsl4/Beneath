@@ -1,6 +1,6 @@
 ﻿using System;
 using TMPro;
-using UnityEngine;
+using UI.General;
 
 namespace UI.ResumeMenu
 {

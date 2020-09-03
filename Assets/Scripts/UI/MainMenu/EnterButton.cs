@@ -1,11 +1,12 @@
-﻿using UI.ResumeMenu;
+﻿using UI.General;
+using UI.ResumeMenu;
 using UnityEngine;
 
 namespace UI.MainMenu
 {
     public class EnterButton : BeneathButton<MainMenuManager>
     {
-        protected override void ExecuteAction()
+        protected override void SubmitAction()
         {
 
             if (Beneath.SaveManager.HasProgress())

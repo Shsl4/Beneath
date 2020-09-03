@@ -1,14 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PolygonCollider2D))]
 public class CameraConfinerShape : MonoBehaviour
 {
     [HideInInspector]
-    public PolygonCollider2D Collider2D;
+    public PolygonCollider2D polygonCollider;
 
     private void Awake()
     {
-        Collider2D = GetComponent<PolygonCollider2D>();
+        polygonCollider = GetComponent<PolygonCollider2D>();
     }
 }

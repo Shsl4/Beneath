@@ -19,7 +19,6 @@ namespace Environment
     [CanEditMultipleObjects]
     public class LinkTriggerEditor : RoomLinkerEditor
     {
-
     }
     #endif
     

@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Runtime.Serialization;
-using Dummies;
 using TMPro;
+using UI.General;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 namespace UI.SaveMenu
 {
     public class SaveMenuManager : UIManager
     {
 
-        public SaveButton SaveBtn => GetComponentInChildren<SaveButton>(true);
-        public BackDummy ReturnBtn => GetComponentInChildren<BackDummy>(true);
-        public SaveConfirmationButton SaveConfirmation => GetComponentInChildren<SaveConfirmationButton>(true);
+        public SaveButton SaveBeneathBtn => GetComponentInChildren<SaveButton>(true);
+        public BeneathButton<UIManager> ReturnBtn => GetComponentInChildren<BeneathButton<UIManager>>(true);
+        public SaveConfirmationButton SaveConfirmationBeneath => GetComponentInChildren<SaveConfirmationButton>(true);
         
         public TMP_Text nameText;
         public TMP_Text levelText;
@@ -52,10 +49,10 @@ namespace UI.SaveMenu
             levelText.color = Color.yellow;
             timeText.color = Color.yellow;
             areaText.color = Color.yellow;
-            SaveBtn.gameObject.SetActive(false);
+            SaveBeneathBtn.gameObject.SetActive(false);
             ReturnBtn.gameObject.SetActive(false);
-            SaveConfirmation.gameObject.SetActive(true);
-            SaveConfirmation.Select();
+            SaveConfirmationBeneath.gameObject.SetActive(true);
+            SaveConfirmationBeneath.Select();
         }
 
         public override void Open()

@@ -2,7 +2,7 @@
 
 namespace Interfaces.UI
 {
-    public interface ISelectableInterface : ISelectHandler, ISubmitHandler, ICancelHandler
+    public interface IBeneathSelectable : ISelectHandler, ISubmitHandler, ICancelHandler
     {
     }
 }

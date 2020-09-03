@@ -175,8 +175,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3770827170610113452}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 1
 --- !u!1 &507631687124861387
 GameObject:
@@ -353,8 +358,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4541034994011875310}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
 --- !u!1 &719796270225327479
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,8 +400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 648, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 660, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2897037920267772873
 CanvasRenderer:
@@ -448,7 +458,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -530,8 +540,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4083559685577945533}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &835044471887170262
 GameObject:
@@ -568,8 +583,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 648, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 660, y: -216}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3053386407439903848
 CanvasRenderer:
@@ -628,7 +643,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -710,8 +725,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4233420503884840476}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &852017894893979147
 GameObject:
@@ -748,8 +768,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 888, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 876, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3034189771919696053
 CanvasRenderer:
@@ -806,7 +826,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -888,8 +908,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4216623535348167361}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &906095721374196043
 GameObject:
@@ -1066,8 +1091,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2367354823814969250}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
 --- !u!1 &1412454568897308994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,8 +1273,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2507527472654081416}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 2
 --- !u!1 &1487087350475790367
 GameObject:
@@ -1281,8 +1316,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 648, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 660, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3848977169155702433
 CanvasRenderer:
@@ -1339,7 +1374,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1421,8 +1456,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2735302432249752789}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &1649513412035218641
 GameObject:
@@ -1459,8 +1499,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1128, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 1092, y: -216}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3975937341067962991
 CanvasRenderer:
@@ -1517,7 +1557,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1599,8 +1639,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2860545201243306011}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &1784901982921231913
 GameObject:
@@ -1637,8 +1682,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1008, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 984, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4110762414056810647
 CanvasRenderer:
@@ -1695,7 +1740,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1777,8 +1822,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2995935971423107811}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &1907965399981190202
 GameObject:
@@ -1911,7 +1961,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1993,8 +2043,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2529481920941238780}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
 --- !u!1 &2264416271528050724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,8 +2423,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1545407049680610135}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   isAccept: 0
 --- !u!1 &2909207405958625637
 GameObject:
@@ -2406,8 +2466,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 408, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 444, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &691011170426052571
 CanvasRenderer:
@@ -2464,7 +2524,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2546,8 +2606,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1804001411362278831}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &3255946187359856095
 GameObject:
@@ -2584,8 +2649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1128, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 1092, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &929451855691645793
 CanvasRenderer:
@@ -2642,7 +2707,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2724,8 +2789,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2051949073812623637}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &3366950555452702290
 GameObject:
@@ -2763,7 +2833,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 768, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1112580387366033644
 CanvasRenderer:
@@ -2822,7 +2892,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2904,8 +2974,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2301131266388118168}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &3656011545101722041
 GameObject:
@@ -3082,8 +3157,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 282123827487954291}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   isAccept: 1
 --- !u!1 &3799359448320999527
 GameObject:
@@ -3120,8 +3200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 768, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 768, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1545696807612950233
 CanvasRenderer:
@@ -3178,7 +3258,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3260,8 +3340,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 426861512882566317}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &3917293024479347487
 GameObject:
@@ -3298,8 +3383,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1128, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 1092, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1699096239359796641
 CanvasRenderer:
@@ -3356,7 +3441,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3438,8 +3523,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 507649197334411221}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &4094385016126110459
 GameObject:
@@ -3476,8 +3566,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 408, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 444, y: -216}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1809126802571648069
 CanvasRenderer:
@@ -3534,7 +3624,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3616,8 +3706,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 685849496419356209}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &4277501274848421057
 GameObject:
@@ -3693,8 +3788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 336, y: -216}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2140938891535889664
 CanvasRenderer:
@@ -3751,7 +3846,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3833,8 +3928,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 948513301293148020}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &4364838853404949848
 GameObject:
@@ -3947,8 +4047,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 528, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 552, y: -216}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7069860744821087128
 CanvasRenderer:
@@ -4007,7 +4107,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4089,8 +4189,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8251403369559951852}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &4927366502727004900
 GameObject:
@@ -4127,8 +4232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1008, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 984, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7325359868103660634
 CanvasRenderer:
@@ -4185,7 +4290,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4267,8 +4372,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8446229226510059054}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &4990039754138571573
 GameObject:
@@ -4451,8 +4561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 528, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 552, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7780976681209299268
 CanvasRenderer:
@@ -4509,7 +4619,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4591,8 +4701,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8891366076916110128}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &5391418199350092010
 GameObject:
@@ -4629,8 +4744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 768, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 768, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7717841614631962196
 CanvasRenderer:
@@ -4687,7 +4802,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4769,8 +4884,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 8900422693808149536}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &5530804745091496841
 GameObject:
@@ -4807,8 +4927,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1248, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 1200, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7856599763908697399
 CanvasRenderer:
@@ -4865,7 +4985,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4947,8 +5067,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 9049931351665217347}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &5600298319292695976
 GameObject:
@@ -5334,9 +5459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85a6690a7754bc6b0369d412c961e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LastSubmit: {fileID: 0}
-  Source: {fileID: 0}
-  FirstSelected: {fileID: 2105500664859333786}
+  source: {fileID: 0}
+  firstSelected: {fileID: 2105500664859333786}
   titleView: {fileID: 5888102473779402897}
   controlsView: {fileID: 4364838853404949848}
   nameView: {fileID: 4277501274848421057}
@@ -5380,8 +5504,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 408, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 444, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8453432963318081948
 CanvasRenderer:
@@ -5438,7 +5562,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5520,8 +5644,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7336169435930688488}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &6344273145214896868
 GameObject:
@@ -5558,8 +5687,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 888, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 876, y: -216}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8773575610965339226
 CanvasRenderer:
@@ -5618,7 +5747,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5700,8 +5829,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7592488218919026222}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &6654823608599177627
 GameObject:
@@ -5850,7 +5984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4649424613604e5ea78d520d6ba7b385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActualName: 
+  actualName: 
 --- !u!1 &6712378806411899729
 GameObject:
   m_ObjectHideFlags: 0
@@ -5932,12 +6066,12 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 2
-  m_ConstraintCount: 3
+  mStartCorner: 0
+  mStartAxis: 0
+  mCellSize: {x: 100, y: 100}
+  mSpacing: {x: 0, y: 0}
+  mConstraintProp: 2
+  mConstraintCount: 3
   sizeRatio: 0.75
 --- !u!1 &7204722482900500460
 GameObject:
@@ -5974,8 +6108,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 336, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4770775087161203026
 CanvasRenderer:
@@ -6032,7 +6166,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6114,8 +6248,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5956817463136602918}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &7603408095377789873
 GameObject:
@@ -6152,8 +6291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1008, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 984, y: -216}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5210059107617846543
 CanvasRenderer:
@@ -6212,7 +6351,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6294,8 +6433,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6400237814306744187}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &7607480862993122300
 GameObject:
@@ -6332,8 +6476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 888, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 876, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5213569466612491586
 CanvasRenderer:
@@ -6390,7 +6534,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6472,8 +6616,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6396728341149103926}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &7756939235288793582
 GameObject:
@@ -6650,8 +6799,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2497941983049378356}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
 --- !u!1 &7826844340129041747
 GameObject:
   m_ObjectHideFlags: 0
@@ -6821,8 +6975,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 288, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 336, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5749481312049104900
 CanvasRenderer:
@@ -6879,7 +7033,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6961,8 +7115,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6869587627070200432}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &8476844914321955827
 GameObject:
@@ -6999,8 +7158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 528, y: -96}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 552, y: -108}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6082867549257055565
 CanvasRenderer:
@@ -7057,7 +7216,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7139,8 +7298,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4968948719260577593}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &8564899501501723358
 GameObject:
@@ -7241,8 +7405,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1248, y: -336}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 1200, y: -324}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6457338284340675129
 CanvasRenderer:
@@ -7299,7 +7463,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7381,8 +7545,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5261046261560578125}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0
 --- !u!1 &9042214315350581600
 GameObject:
@@ -7553,8 +7722,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1248, y: -216}
-  m_SizeDelta: {x: 96, y: 96}
+  m_AnchoredPosition: {x: 1200, y: -216}
+  m_SizeDelta: {x: 81, y: 81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6845280262149145801
 CanvasRenderer:
@@ -7611,7 +7780,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 67.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7693,6 +7862,11 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5647722183791449789}
-  SelectSound: {fileID: 0}
-  SubmitSound: {fileID: 0}
+  selectSound: {fileID: 0}
+  submitSound: {fileID: 0}
+  selectOnBack: {fileID: 0}
+  selectOnSubmit: {fileID: 0}
+  backNavigationType: 0
+  submitType: 0
+  allowBackNavigation: 0
   buttonType: 0

@@ -1,17 +1,21 @@
 ﻿using System;
 using Interfaces;
+using UI.General;
 using UI.Inventory;
+using UI.Inventory.BottomView.Selection;
 
 namespace UI.EscapeMenu.Equipment
 {
     public class EquipmentManager : UIManager, IDialogBoxResponder, ISlotEventResponder
     {
 
-        public UnEquipButton UnEquipBtn => GetComponentInChildren<UnEquipButton>(true);
-        public DiscardButton DiscardBtn => GetComponentInChildren<DiscardButton>(true);
+        public UnEquipButton UnEquipBeneathBtn => GetComponentInChildren<UnEquipButton>(true);
+        public DiscardButton DiscardBeneathBtn => GetComponentInChildren<DiscardButton>(true);
         public TextViewComponent TextView => GetComponentInChildren<TextViewComponent>(true);
         public SlotComponent WeaponSlot => GetComponentsInChildren<SlotComponent>(true)[0];
         public SlotComponent ArmorSlot => GetComponentsInChildren<SlotComponent>(true)[1];
+
+        private SlotComponent _activeSlot;
         
         public void RefreshSlots()
         {
@@ -23,6 +27,16 @@ namespace UI.EscapeMenu.Equipment
         {
             base.Open();
             RefreshSlots();
+        }
+
+        public void SetActiveSlot(SlotComponent slot)
+        {
+            _activeSlot = slot;
+        }
+
+        public SlotComponent GetActiveSlot()
+        {
+            return _activeSlot;
         }
 
         public void RefreshInfoFromSlot(SlotComponent slot)
@@ -51,9 +65,9 @@ namespace UI.EscapeMenu.Equipment
         {
 
             Beneath.UnEquipResult result;
-            string itemName = "";
+            string itemName;
             
-            if (LastSubmit == ArmorSlot.gameObject)
+            if (_activeSlot == ArmorSlot)
             {
                 itemName = Beneath.Data.PlayerArmor.GetItem().name;
                 result = Beneath.Data.player.UnEquipArmor(discard);
@@ -99,22 +113,22 @@ namespace UI.EscapeMenu.Equipment
         public void JumpToSelection()
         {
             EnableSelection();
-            UnEquipBtn.Select();        
+            UnEquipBeneathBtn.Select();        
         }
 
         public override void EnableSelection()
         {
             
-            UnEquipBtn.interactable = true;
-            DiscardBtn.interactable = true;
+            UnEquipBeneathBtn.interactable = true;
+            DiscardBeneathBtn.interactable = true;
             
         }
 
         public override void DisableSelection()
         {
 
-            UnEquipBtn.interactable = false;
-            DiscardBtn.interactable = false;
+            UnEquipBeneathBtn.interactable = false;
+            DiscardBeneathBtn.interactable = false;
 
         }
 
@@ -129,6 +143,12 @@ namespace UI.EscapeMenu.Equipment
             {
                 TextView.RevealText(text);
             }
+        }
+        
+        public void DisplayEnded()
+        {
+            _activeSlot.Select();
+            _activeSlot = null;
         }
     }
 }
