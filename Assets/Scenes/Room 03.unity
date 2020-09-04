@@ -245,17 +245,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6307147864902559992, guid: 9acf5b952f95643c3bdd56b2471d7f71, type: 3}
       propertyPath: textToDisplay
-      value: 'Haha you''re stuck!
+      value: 'Welcome to an empty room.
 
 
 
 
-        Noob!
+        There''s nothing to do here.
+        I think...
 
 
 
 
-        Get fucked.'
+        Yep, absolutely nothing.'
       objectReference: {fileID: 0}
     - target: {fileID: 7088555269437063749, guid: 9acf5b952f95643c3bdd56b2471d7f71, type: 3}
       propertyPath: m_Name

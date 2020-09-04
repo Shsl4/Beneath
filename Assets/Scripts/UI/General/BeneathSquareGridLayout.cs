@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.UI;
 using Constraint = UnityEngine.UI.GridLayoutGroup.Constraint;
 using Axis = UnityEngine.UI.GridLayoutGroup.Axis;
@@ -10,36 +11,36 @@ namespace UI.General
     public class BeneathSquareGridLayout : LayoutGroup
     {
         
-        [SerializeField] protected Corner mStartCorner = Corner.UpperLeft;
+        [SerializeField] protected Corner startCorner = Corner.UpperLeft;
         
-        public Corner StartCorner { get { return mStartCorner; } set { SetProperty(ref mStartCorner, value); } }
+        public Corner StartCorner { get { return startCorner; } set { SetProperty(ref startCorner, value); } }
 
-        [SerializeField] protected Axis mStartAxis = Axis.Horizontal;
+        [SerializeField] protected Axis startAxis = Axis.Horizontal;
         
-        public Axis StartAxis { get { return mStartAxis; } set { SetProperty(ref mStartAxis, value); } }
+        public Axis StartAxis { get { return startAxis; } set { SetProperty(ref startAxis, value); } }
 
-        [SerializeField] protected Vector2 mCellSize = new Vector2(100, 100);
+        [SerializeField] protected Vector2 cellSize = new Vector2(100, 100);
 
         public float CellLength
         {
-            get => CellLength; set => SetProperty(ref mCellSize, DetermineCellSize(new Vector2(value, value)));
+            get => CellLength; set => SetProperty(ref cellSize, DetermineCellSize(new Vector2(value, value)));
         }
         
-        private Vector2 CellSize { get { return DetermineCellSize(mCellSize); } set { SetProperty(ref mCellSize, DetermineCellSize(value)); } }
+        private Vector2 CellSize { get { return DetermineCellSize(cellSize); } set { SetProperty(ref cellSize, DetermineCellSize(value)); } }
 
-        [SerializeField] protected Vector2 mSpacing = Vector2.zero;
+        [SerializeField] protected Vector2 spacing = Vector2.zero;
         
-        public Vector2 Spacing { get { return DetermineSpacing(mSpacing); } set { SetProperty(ref mSpacing, DetermineSpacing(value)); } }
+        public Vector2 Spacing { get { return DetermineSpacing(spacing); } set { SetProperty(ref spacing, DetermineSpacing(value)); } }
 
-        [SerializeField] protected Constraint mConstraintProp = Constraint.Flexible;
+        [SerializeField] protected Constraint constraintProp = Constraint.Flexible;
         
-        public Constraint ConstraintProp { get { return mConstraintProp; } set { SetProperty(ref mConstraintProp, value); } }
+        public Constraint ConstraintProp { get { return constraintProp; } set { SetProperty(ref constraintProp, value); } }
 
-        [SerializeField] protected int mConstraintCount = 2;
+        [SerializeField] protected int constraintCount = 2;
         
         public float sizeRatio = 1.0f;
         
-        public int ConstraintCount { get { return mConstraintCount; } set { SetProperty(ref mConstraintCount, Mathf.Max(1, value)); } }
+        public int ConstraintCount { get { return constraintCount; } set { SetProperty(ref constraintCount, Mathf.Max(1, value)); } }
 
         protected BeneathSquareGridLayout()
         {}
@@ -48,7 +49,7 @@ namespace UI.General
         protected override void OnValidate()
         {
             base.OnValidate();
-            ConstraintCount = ConstraintCount;
+            ConstraintCount = constraintCount;
         }
 
         #endif
@@ -59,13 +60,13 @@ namespace UI.General
 
             int minColumns = 0;
             int preferredColumns = 0;
-            if (mConstraintProp == Constraint.FixedColumnCount)
+            if (constraintProp == Constraint.FixedColumnCount)
             {
-                minColumns = preferredColumns = mConstraintCount;
+                minColumns = preferredColumns = constraintCount;
             }
-            else if (mConstraintProp == Constraint.FixedRowCount)
+            else if (constraintProp == Constraint.FixedRowCount)
             {
-                minColumns = preferredColumns = Mathf.CeilToInt(rectChildren.Count / (float)mConstraintCount - 0.001f);
+                minColumns = preferredColumns = Mathf.CeilToInt(rectChildren.Count / (float)constraintCount - 0.001f);
             }
             else
             {
@@ -82,13 +83,13 @@ namespace UI.General
         public override void CalculateLayoutInputVertical()
         {
             int minRows = 0;
-            if (mConstraintProp == Constraint.FixedColumnCount)
+            if (constraintProp == Constraint.FixedColumnCount)
             {
-                minRows = Mathf.CeilToInt(rectChildren.Count / (float)mConstraintCount - 0.001f);
+                minRows = Mathf.CeilToInt(rectChildren.Count / (float)constraintCount - 0.001f);
             }
-            else if (mConstraintProp == Constraint.FixedRowCount)
+            else if (constraintProp == Constraint.FixedRowCount)
             {
-                minRows = mConstraintCount;
+                minRows = constraintCount;
             }
             else
             {
@@ -136,16 +137,16 @@ namespace UI.General
 
             int cellCountX = 1;
             int cellCountY = 1;
-            if (mConstraintProp == Constraint.FixedColumnCount)
+            if (constraintProp == Constraint.FixedColumnCount)
             {
-                cellCountX = mConstraintCount;
+                cellCountX = constraintCount;
 
                 if (rectChildren.Count > cellCountX)
                     cellCountY = rectChildren.Count / cellCountX + (rectChildren.Count % cellCountX > 0 ? 1 : 0);
             }
-            else if (mConstraintProp == Constraint.FixedRowCount)
+            else if (constraintProp == Constraint.FixedRowCount)
             {
-                cellCountY = mConstraintCount;
+                cellCountY = constraintCount;
 
                 if (rectChildren.Count > cellCountY)
                     cellCountX = rectChildren.Count / cellCountY + (rectChildren.Count % cellCountY > 0 ? 1 : 0);
@@ -297,8 +298,66 @@ namespace UI.General
             }
             return new Vector2(size, size) * sizeRatio;
         }
-
-
-
+        
     }
+    
+#if UNITY_EDITOR
+
+    [CustomEditor(typeof(BeneathSquareGridLayout), true)]
+    [CanEditMultipleObjects]
+    public class BeneathSquareGridLayoutEditor : Editor
+    {
+        
+        private SerializedProperty _childAlignment;
+        private SerializedProperty _startCorner;
+        private SerializedProperty _startAxis;
+        private SerializedProperty _cellSize;
+        private SerializedProperty _spacing;
+        private SerializedProperty _constraintProp;
+        private SerializedProperty _constraintCount;
+        private SerializedProperty _sizeRatio;
+        
+        protected void OnEnable()
+        {
+            _childAlignment = serializedObject.FindProperty("m_ChildAlignment");
+            _startCorner = serializedObject.FindProperty("startCorner");
+            _startAxis = serializedObject.FindProperty("startAxis");
+            _cellSize = serializedObject.FindProperty("cellSize");
+            _spacing = serializedObject.FindProperty("spacing");
+            _constraintProp = serializedObject.FindProperty("constraintProp");
+            _constraintCount = serializedObject.FindProperty("constraintCount");
+            _sizeRatio = serializedObject.FindProperty("sizeRatio");
+        }
+
+        public override void OnInspectorGUI()
+        {
+
+            serializedObject.Update();
+            
+            EditorGUILayout.PropertyField(_childAlignment);
+            EditorGUILayout.PropertyField(_startCorner);
+            EditorGUILayout.PropertyField(_startAxis);
+            
+            EditorGUILayout.PropertyField(_constraintProp);
+
+            if (_constraintProp.enumValueIndex == 0)
+            {
+                EditorGUILayout.PropertyField(_cellSize);
+                EditorGUILayout.PropertyField(_spacing);
+            }
+            else
+            {
+                EditorGUILayout.PropertyField(_constraintCount);
+                EditorGUILayout.PropertyField(_sizeRatio);
+            }
+            
+            serializedObject.ApplyModifiedProperties();
+            
+        }
+    }
+    
+#endif
+    
+    
+    
 }

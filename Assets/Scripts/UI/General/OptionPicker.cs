@@ -94,7 +94,7 @@ namespace UI.General
     public class OptionPickerEditor : BeneathButtonEditor
     {
 
-        OptionPickerEditor()
+        public OptionPickerEditor()
         {
             ShowDefaultNavigation = false;
         }

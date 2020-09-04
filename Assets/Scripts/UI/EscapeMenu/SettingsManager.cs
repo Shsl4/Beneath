@@ -7,6 +7,7 @@ namespace UI.EscapeMenu
     {
         public ResolutionPicker ResPicker => GetComponentInChildren<ResolutionPicker>();
         public BoolPicker FullScreenPicker => GetComponentInChildren<BoolPicker>();
+        public IntegerPicker VolumePicker => GetComponentInChildren<IntegerPicker>();
 
         public override void OnEnable()
         {
@@ -26,6 +27,7 @@ namespace UI.EscapeMenu
             
             ResPicker.SetSelected(selectedResolution);
             FullScreenPicker.SetSelected(Screen.fullScreen ? 1 : 0);
+            VolumePicker.SetSelected(Mathf.CeilToInt(AudioListener.volume * 10));
             
         }
     }

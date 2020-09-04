@@ -41,6 +41,12 @@ namespace UI.General
         {
             Beneath.Data.player?.DisableInput();
             gameObject.SetActive(true);
+
+            if (HasParent())
+            {
+                GetFirstParent().DisableSelection();
+            }
+            
         }
         
         public virtual void Close()
