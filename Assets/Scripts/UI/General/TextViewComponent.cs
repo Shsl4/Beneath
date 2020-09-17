@@ -24,12 +24,6 @@ namespace UI.General
         private int _pageToReveal = 1;
         private IEnumerator _activeRoutine;
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            Beneath.TextHelpers.SetIdealPointSize(TextBox, lineCount);
-        }
-
         protected override void Awake()
         {
             Beneath.TextHelpers.SetIdealPointSize(TextBox, lineCount);

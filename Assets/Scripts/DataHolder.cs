@@ -85,13 +85,6 @@ public class DataHolder : MonoBehaviour
 
         AudioListener.volume = PlayerPrefs.GetFloat("masterVolume");
 
-        if (!PlayerPrefs.HasKey("masterVolume"))
-        {
-            PlayerPrefs.SetFloat("masterVolume", 1.0f);
-        }
-
-        AudioListener.volume = PlayerPrefs.GetFloat("masterVolume");
-
         SceneManager.LoadScene("MainMenu");
     }
 

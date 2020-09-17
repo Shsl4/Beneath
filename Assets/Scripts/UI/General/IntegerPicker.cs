@@ -7,6 +7,7 @@ namespace UI.General
     {
 
         public int maxInteger = 3;
+        
         private string[] _ints;
 
         public override string[] GetChoices()
