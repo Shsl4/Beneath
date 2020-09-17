@@ -8,7 +8,7 @@ namespace UI
     {
 
         public TextViewComponent TextView => GetComponentInChildren<TextViewComponent>();
-        
+
         public void OpenWithText(string text)
         {
             Open();

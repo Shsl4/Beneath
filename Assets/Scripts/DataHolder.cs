@@ -66,6 +66,13 @@ public class DataHolder : MonoBehaviour
         Beneath.Assets.SaveMenu.LoadAssetAsync<GameObject>();
         Beneath.Assets.ResumeMenu.LoadAssetAsync<GameObject>();
 
+        if (!PlayerPrefs.HasKey("masterVolume"))
+        {
+            PlayerPrefs.SetFloat("masterVolume", 1.0f);
+        }
+
+        AudioListener.volume = PlayerPrefs.GetFloat("masterVolume");
+
         SceneManager.LoadScene("MainMenu");
     }
 
