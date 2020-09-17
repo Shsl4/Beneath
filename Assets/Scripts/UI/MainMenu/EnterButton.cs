@@ -11,7 +11,7 @@ namespace UI.MainMenu
 
             if (Beneath.SaveManager.HasProgress())
             {
-                ((GameObject)Instantiate(Beneath.Assets.ResumeMenu.Asset)).GetComponent<ResumeMenuManager>().Open();
+                ((GameObject)Instantiate(Beneath.AssetReferences.ResumeMenu.Asset)).GetComponent<ResumeMenuManager>().Open();
             }
             else
             {

@@ -13,16 +13,16 @@ namespace UI.Inventory.BottomView.Info
 
         private IEnumerator _revealRoutine;
 
-        public void UpdateInfo(InventoryItem item)
+        public void UpdateInfo(ItemData itemData)
         {
             
             String output = "";
 
-            if (item != null)
+            if (itemData != null)
             {
                 
-                output += "Name: " + item.name + "\n\n";
-                output += item.FormatDescription();
+                output += "Name: " + itemData.name + "\n\n";
+                output += itemData.FormatDescription();
 
             }
             else

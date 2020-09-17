@@ -1,6 +1,7 @@
 ﻿using System;
 using Attributes;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [Serializable]
 public enum ItemTypes
@@ -15,26 +16,50 @@ public enum ItemTypes
 }
     
 [Serializable]
-public class InventoryItem
+public class ItemData
 {
 
+    public readonly int id;
     public String name;
     public String description;
-    public Sprite sprite;
+    public AssetReference spriteAsset;
     public ItemTypes type;
     public int value;
     public Vector2 colliderSize;
-    public ItemAttribute[] Attributes;
+    public ItemAttribute[] attributes;
 
-    public InventoryItem(string name, string description, Sprite sprite, ItemTypes type, int value, Vector2 colliderSize, ItemAttribute[] attributes)
+    public Sprite sprite => _sprite;
+    private Sprite _sprite;
+
+    public ItemData(int itemID, string name, string description, AssetReference spriteAsset, ItemTypes type, int value, ItemAttribute[] attributes)
     {
+
+        id = itemID;
+        
+        this.attributes = attributes ?? new ItemAttribute[0];
+
+        if (type == ItemTypes.Weapon && GetAttribute<DamageAttribute>() == null)
+        {
+            throw new ArgumentException("Tried to create a weapon item with no damage attribute. Aborting.");
+        }
+        
+        if (type == ItemTypes.Armor && GetAttribute<DefenseAttribute>() == null)
+        {
+            throw new ArgumentException("Tried to create an armor item with no defense attribute. Aborting.");
+        }
+        
         this.name = name;
         this.description = description;
-        this.sprite = sprite;
+        this.spriteAsset = spriteAsset;
         this.type = type;
         this.value = value;
-        this.colliderSize = colliderSize;
-        Attributes = attributes ?? new ItemAttribute[0];
+
+        Beneath.LoadThen<Sprite>(spriteAsset, handle =>
+        {
+            _sprite = handle.Result;
+            colliderSize = _sprite.rect.size;
+        });
+
     }
 
     public string FormatDescription()
@@ -43,7 +68,7 @@ public class InventoryItem
         string result = "";
         result += description + " ";
 
-        foreach (var attribute in Attributes)
+        foreach (var attribute in attributes)
         {
             result += attribute.Format() + ", ";
         }
@@ -52,33 +77,51 @@ public class InventoryItem
         return result;
 
     }
-    
+
+    public T GetAttribute<T>() where T : class
+    {
+
+        foreach (var attr in attributes)
+        {
+            if (attr is T attribute)
+            {
+                return attribute;
+            }
+        }
+
+        return null;
+
+    }
+
 }
     
 public class InventorySlot
 {
         
-    private InventoryItem _item;
+    private ItemData _itemData;
 
-    public InventoryItem GetItem() { return _item; }
+    public ItemData GetItem() { return _itemData; }
+
+    public bool HasItem() { return GetItem() != null; }
 
     public bool Clear()
     {
 
-        if (_item == null) { return false;}
-        _item = null;
+        if (_itemData == null) { return false;}
+        _itemData = null;
         return true;
 
     }
 
-    public bool SetItem(InventoryItem item)
+    public bool SetItem(ItemData itemData)
     {
 
-        if (_item != null) { return false;}
-        _item = item;
+        if (_itemData != null) { return false;}
+        _itemData = itemData;
         return true;
 
     }
+
 }
     
 public class Inventory
@@ -134,9 +177,9 @@ public class Inventory
         return GetSlot(slotIndex) != null && GetSlot(slotIndex).Clear();
     }
 
-    public bool SetItemInSlot(int slotIndex, InventoryItem item)
+    public bool SetItemInSlot(int slotIndex, ItemData itemData)
     {
-        return GetSlot(slotIndex) != null && GetSlot(slotIndex).SetItem(item);
+        return GetSlot(slotIndex) != null && GetSlot(slotIndex).SetItem(itemData);
     }
 
     public void ClearInventory()

@@ -12,7 +12,7 @@ public class DialogComponent : MonoBehaviour, IInteractable
     {
         if (source.GetComponent<ControllableCharacter>() != null)
         {
-            Beneath.Data.DialogBox.OpenWithText(textToDisplay);
+            Beneath.data.DialogBox.OpenWithText(textToDisplay);
         }
     }
 }

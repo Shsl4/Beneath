@@ -4,7 +4,7 @@
     {
 
         Inventory GetInventory();
-        bool PickupItem(InventoryItem item);
+        bool PickupItem(ItemData itemData);
 
     }
 }

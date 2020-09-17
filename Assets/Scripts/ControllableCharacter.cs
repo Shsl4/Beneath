@@ -30,9 +30,9 @@ public class ControllableCharacter : Character, IInventory
     private static readonly int YInput = Animator.StringToHash("YInput");
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
-    private static Inventory PlayerInventory => Beneath.Data.PlayerInventory;
-    private static InventorySlot CharacterArmor => Beneath.Data.PlayerArmor;
-    private static InventorySlot CharacterWeapon => Beneath.Data.PlayerWeapon;
+    private static Inventory PlayerInventory => Beneath.data.PlayerInventory;
+    private static InventorySlot CharacterArmor => Beneath.data.ArmorSlot;
+    private static InventorySlot CharacterWeapon => Beneath.data.WeaponSlot;
     
     public Vector2 GetPosition() { return _rigidbody.position; }
 
@@ -97,7 +97,7 @@ public class ControllableCharacter : Character, IInventory
 
         if (CharacterWeapon.GetItem() != null)
         {
-            foreach (var attribute in CharacterWeapon.GetItem().Attributes)
+            foreach (var attribute in CharacterWeapon.GetItem().attributes)
             {
                 if (attribute is DamageAttribute damageAttribute)
                 {
@@ -108,7 +108,7 @@ public class ControllableCharacter : Character, IInventory
 
         if (CharacterArmor.GetItem() != null)
         {
-            foreach (var attribute in CharacterArmor.GetItem().Attributes)
+            foreach (var attribute in CharacterArmor.GetItem().attributes)
             {
                 if (attribute is DamageModifierAttribute modifier)
                 {
@@ -132,7 +132,7 @@ public class ControllableCharacter : Character, IInventory
 
         if (PlayerInventory.GetSlot(index) != null)
         {
-            Beneath.DropItem(_rigidbody.position, PlayerInventory.GetSlot(index).GetItem());
+            Beneath.DropItem(_rigidbody.position, PlayerInventory.GetSlot(index).GetItem().id);
             PlayerInventory.GetSlot(index).Clear();
         }
     }
@@ -148,13 +148,13 @@ public class ControllableCharacter : Character, IInventory
     public Beneath.EquipResult EquipWeapon(int index)
     {
 
-        if (Beneath.Data.PlayerInventory.GetSlot(index).GetItem() != null &&
-            Beneath.Data.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Weapon)
+        if (Beneath.data.PlayerInventory.GetSlot(index).GetItem() != null &&
+            Beneath.data.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Weapon)
         {
 
             if (CharacterWeapon.GetItem() == null)
             {
-                CharacterWeapon.SetItem(Beneath.Data.PlayerInventory.GetSlot(index).GetItem());
+                CharacterWeapon.SetItem(Beneath.data.PlayerInventory.GetSlot(index).GetItem());
                 ClearItemFromSlot(index);
                 return Beneath.EquipResult.Success;
             }
@@ -170,13 +170,13 @@ public class ControllableCharacter : Character, IInventory
     public Beneath.EquipResult EquipArmor(int index)
     {
 
-        if (Beneath.Data.PlayerInventory.GetSlot(index).GetItem() != null &&
-            Beneath.Data.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Armor)
+        if (Beneath.data.PlayerInventory.GetSlot(index).GetItem() != null &&
+            Beneath.data.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Armor)
         {
 
             if (CharacterArmor.GetItem() == null)
             {
-                CharacterArmor.SetItem(Beneath.Data.PlayerInventory.GetSlot(index).GetItem());
+                CharacterArmor.SetItem(Beneath.data.PlayerInventory.GetSlot(index).GetItem());
                 ClearItemFromSlot(index);
                 return Beneath.EquipResult.Success;
             }
@@ -198,7 +198,7 @@ public class ControllableCharacter : Character, IInventory
 
         if (discard)
         {
-            Beneath.DropItem(_rigidbody.position, CharacterArmor.GetItem());
+            Beneath.DropItem(_rigidbody.position, CharacterArmor.GetItem().id);
             CharacterArmor.Clear();
             return Beneath.UnEquipResult.Success;
         }
@@ -224,7 +224,7 @@ public class ControllableCharacter : Character, IInventory
 
         if (discard)
         {
-            Beneath.DropItem(_rigidbody.position, CharacterWeapon.GetItem());
+            Beneath.DropItem(_rigidbody.position, CharacterWeapon.GetItem().id);
             CharacterWeapon.Clear();
             return Beneath.UnEquipResult.Success;
         }
@@ -240,32 +240,32 @@ public class ControllableCharacter : Character, IInventory
 
     }
 
-    public Inventory GetInventory() { return Beneath.Data.PlayerInventory; }
+    public Inventory GetInventory() { return Beneath.data.PlayerInventory; }
 
-    public bool PickupItem(InventoryItem item)
+    public bool PickupItem(ItemData itemData)
     {
 
         bool result = false;
         string message;
 
-        if (!Beneath.Data.PlayerInventory.IsFull())
+        if (!Beneath.data.PlayerInventory.IsFull())
         {
-            if (Beneath.Data.PlayerInventory.GetNextEmptySlot().SetItem(item))
+            if (Beneath.data.PlayerInventory.GetNextEmptySlot().SetItem(itemData))
             {
-                message = "You picked up \"" + item.name + "\".";
+                message = "You picked up \"" + itemData.name + "\".";
                 result = true;
             }
             else
             {
-                message = "You tried to pick up \"" + item.name + "\", but it failed.";
+                message = "You tried to pick up \"" + itemData.name + "\", but it failed.";
             }
         }
         else
         {
-            message = "You tried to pick up \"" + item.name + "\", but your inventory was full.";
+            message = "You tried to pick up \"" + itemData.name + "\", but your inventory was full.";
         }
 
-        Beneath.Data.DialogBox.OpenWithText(message);
+        Beneath.data.DialogBox.OpenWithText(message);
 
         return result;
     }
@@ -295,7 +295,7 @@ public class ControllableCharacter : Character, IInventory
 
     public void OnEscape()
     {
-        Beneath.Data.EscapeMenu.Open();
+        Beneath.data.EscapeMenu.Open();
     }
     
     public void TravelToSceneAtLocation(string scene, Vector2 location)

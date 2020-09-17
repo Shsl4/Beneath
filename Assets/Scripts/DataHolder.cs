@@ -14,13 +14,22 @@ public class DataHolder : MonoBehaviour
 {
     
     public string PlayerName { get; private set; }
-    public int PlayerXp { get; private set; }        
-    public int PlayerHealth { get; private set;}        
-    public int PlayerMoney { get; private set; }        
+    public int PlayerExp { get; private set; }        
+    public int PlayerHealth { get; private set;}
+    public int PlayerGold { get; private set; }
+    public int PlayerMaxHealth => DetermineMaxHealth();
+    public int PlayerLevel => DetermineLevel();
+    public int ExpBeforeLevelUp => DetermineExpBeforeLevelUp();
     public int ElapsedSessionTime => _stopwatch.Elapsed.Seconds;
-    public InventorySlot PlayerArmor { get; } = new InventorySlot();
-    public InventorySlot PlayerWeapon { get; } = new InventorySlot();
+    
+    
+    public InventorySlot ArmorSlot { get; } = new InventorySlot();
+    public InventorySlot WeaponSlot { get; } = new InventorySlot();
     public Inventory PlayerInventory { get; } = new Inventory(8);
+    
+    private int DetermineMaxHealth() { return 20 + 2 * PlayerLevel; }
+    private int DetermineExpBeforeLevelUp() { return 15 + PlayerExp / 3; }
+    private int DetermineLevel() { return 0; }
 
     private EscapeMenuManager _escapeMenu;
     private DialogBoxManager _dialogBox;
@@ -31,7 +40,7 @@ public class DataHolder : MonoBehaviour
         get
         {
             if (_dialogBox) { return _dialogBox; }
-            _dialogBox = Instantiate((GameObject)Beneath.Assets.DialogBox.Asset).GetComponent<DialogBoxManager>();
+            _dialogBox = Instantiate((GameObject)Beneath.AssetReferences.DialogBox.Asset).GetComponent<DialogBoxManager>();
             return _dialogBox;
         }
     }
@@ -42,7 +51,7 @@ public class DataHolder : MonoBehaviour
         {
 
             if (_escapeMenu) { return _escapeMenu; }
-            _escapeMenu = Instantiate((GameObject)Beneath.Assets.EscapeMenu.Asset).GetComponent<EscapeMenuManager>();
+            _escapeMenu = Instantiate((GameObject)Beneath.AssetReferences.EscapeMenu.Asset).GetComponent<EscapeMenuManager>();
             return _escapeMenu;
                 
         }
@@ -57,14 +66,24 @@ public class DataHolder : MonoBehaviour
         
         DontDestroyOnLoad(gameObject);
         
-        Beneath.Data = this;
+        Beneath.data = this;
         
-        Beneath.Assets.Item.LoadAssetAsync<GameObject>();
-        Beneath.Assets.DialogBox.LoadAssetAsync<GameObject>();
-        Beneath.Assets.EscapeMenu.LoadAssetAsync<GameObject>();
-        Beneath.Assets.PlayerCharacter.LoadAssetAsync<GameObject>();
-        Beneath.Assets.SaveMenu.LoadAssetAsync<GameObject>();
-        Beneath.Assets.ResumeMenu.LoadAssetAsync<GameObject>();
+        Beneath.AssetReferences.Item.LoadAssetAsync<GameObject>();
+        Beneath.AssetReferences.DialogBox.LoadAssetAsync<GameObject>();
+        Beneath.AssetReferences.EscapeMenu.LoadAssetAsync<GameObject>();
+        Beneath.AssetReferences.PlayerCharacter.LoadAssetAsync<GameObject>();
+        Beneath.AssetReferences.SaveMenu.LoadAssetAsync<GameObject>();
+        Beneath.AssetReferences.ResumeMenu.LoadAssetAsync<GameObject>();
+        Beneath.AssetReferences.NullKeySprite.LoadAssetAsync<Sprite>();
+
+        Beneath.Items.GetDefinedItemsCount();
+        
+        if (!PlayerPrefs.HasKey("masterVolume"))
+        {
+            PlayerPrefs.SetFloat("masterVolume", 1.0f);
+        }
+
+        AudioListener.volume = PlayerPrefs.GetFloat("masterVolume");
 
         SceneManager.LoadScene("MainMenu");
     }
@@ -73,19 +92,19 @@ public class DataHolder : MonoBehaviour
     {
         
         PlayerName = data.playerName;
-        PlayerArmor.SetItem(data.playerArmor);
-        PlayerWeapon.SetItem(data.playerWeapon);
+        ArmorSlot.SetItem(Beneath.Items.GetItemWithID(data.playerArmor));
+        WeaponSlot.SetItem(Beneath.Items.GetItemWithID(data.playerWeapon));
         PlayerHealth = data.playerHealth;
         PlayerName = data.playerName;
-        PlayerMoney = data.playerMoney;
-        PlayerXp = data.playerExp;
+        PlayerGold = data.playerMoney;
+        PlayerExp = data.playerExp;
 
-        for (int i = 0; i < data.playerInventory.Length; i++) { PlayerInventory.GetSlot(i).SetItem(data.playerInventory[i]); }
+        for (int i = 0; i < data.playerInventory.Length; i++) { PlayerInventory.GetSlot(i).SetItem(Beneath.Items.GetItemWithID(data.playerInventory[i])); }
 
         SceneManager.LoadSceneAsync(data.roomName).completed += handle =>
         {
             Vector2 location = new Vector2(data.saveLocation[0], data.saveLocation[1]);
-            player = Instantiate((GameObject) Beneath.Assets.PlayerCharacter.Asset, location, new Quaternion()).GetComponent<ControllableCharacter>();
+            player = Instantiate((GameObject) Beneath.AssetReferences.PlayerCharacter.Asset, location, new Quaternion()).GetComponent<ControllableCharacter>();
             _stopwatch = Stopwatch.StartNew();
         };
 
@@ -95,10 +114,10 @@ public class DataHolder : MonoBehaviour
     {
         
         PlayerName = newName;
-        
+        PlayerHealth = PlayerMaxHealth;
         SceneManager.LoadSceneAsync("Room 01").completed += handle =>
         {
-            player = Instantiate((GameObject)Beneath.Assets.PlayerCharacter.Asset).GetComponent<ControllableCharacter>();
+            player = Instantiate((GameObject)Beneath.AssetReferences.PlayerCharacter.Asset).GetComponent<ControllableCharacter>();
             _stopwatch = Stopwatch.StartNew();
         };
 
@@ -109,20 +128,21 @@ public class DataHolder : MonoBehaviour
         _stopwatch.Restart();
     }
 
-    public InventoryItem[] MakeSerializableInventory()
+    public int[] MakeSerializableInventory()
     {
         
-        InventoryItem[] inventoryItems = new InventoryItem[8];
+        int[] itemIDs = new int[8];
 
         for (int i =0; i < PlayerInventory.GetSlots().Length; i++)
         {
-            inventoryItems[i] = PlayerInventory.GetSlots()[i].GetItem();
+            var item = PlayerInventory.GetSlots()[i].GetItem();
+            itemIDs[i] = item?.id ?? -1;
         }
 
-        return inventoryItems;
+        return itemIDs;
         
     }
-    
+
     /*
      *     public int Damage(int damageAmount, GameObject source)
     {

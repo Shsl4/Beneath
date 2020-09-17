@@ -10,9 +10,8 @@ namespace UI.General
         
         [HideInInspector]
         public AudioSource source;
-
         public GameObject firstSelected;
-        public EventSystem EventSys => EventSystem.current;
+        public static EventSystem EventSys => EventSystem.current;
         
         protected virtual void Awake()
         {
@@ -39,7 +38,12 @@ namespace UI.General
 
         public virtual void Open()
         {
-            Beneath.Data.player?.DisableInput();
+
+            if (Beneath.data.player)
+            {
+                Beneath.data.player.DisableInput();
+            }
+            
             gameObject.SetActive(true);
 
             if (HasParent())
@@ -58,7 +62,7 @@ namespace UI.General
             }
             else
             {
-                Beneath.Data.player.EnableInput();
+                Beneath.data.player.EnableInput();
             }
             
             gameObject.SetActive(false);
@@ -77,7 +81,6 @@ namespace UI.General
         }
         
         public bool IsOpen() { return gameObject.activeInHierarchy; }
-
         public bool HasParent() { return GetParents().Length > 1; }
 
         public UIManager GetFirstParent()
@@ -86,10 +89,7 @@ namespace UI.General
             return GetParents()[1];
         }
 
-        public UIManager[] GetParents()
-        {
-            return GetComponentsInParent<UIManager>(true);
-        }
+        public UIManager[] GetParents() { return GetComponentsInParent<UIManager>(true); }
 
         public virtual void EnableSelection() {}
         public virtual void DisableSelection() {}

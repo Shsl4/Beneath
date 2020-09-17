@@ -3,7 +3,7 @@
     public interface IInventoryItem
     {
 
-        InventoryItem ToInventoryItem();
+        ItemData ToInventoryItem();
 
     }
 }

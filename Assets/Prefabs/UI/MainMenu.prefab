@@ -6066,12 +6066,12 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  mStartCorner: 0
-  mStartAxis: 0
-  mCellSize: {x: 100, y: 100}
-  mSpacing: {x: 0, y: 0}
-  mConstraintProp: 2
-  mConstraintCount: 3
+  startCorner: 0
+  startAxis: 0
+  cellSize: {x: 100, y: 100}
+  spacing: {x: 0, y: 0}
+  constraintProp: 2
+  constraintCount: 3
   sizeRatio: 0.75
 --- !u!1 &7204722482900500460
 GameObject:

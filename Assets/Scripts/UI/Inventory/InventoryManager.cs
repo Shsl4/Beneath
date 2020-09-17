@@ -26,9 +26,9 @@ namespace UI.Inventory
         {
             for (int i = 0; i < Slots.Length; i++)
             {
-                if (Beneath.Data.PlayerInventory.GetSlot(i) != null)
+                if (Beneath.data.PlayerInventory.GetSlot(i) != null)
                 {
-                    Slots[i].SetHeldItem(Beneath.Data.PlayerInventory.GetSlot(i).GetItem());
+                    Slots[i].SetHeldItem(Beneath.data.PlayerInventory.GetSlot(i).GetItem());
                 }
             }
         }
@@ -89,7 +89,7 @@ namespace UI.Inventory
 
         public void DropItemFromActiveSlot(bool discard)
         {
-            Beneath.Data.player.DropItemFromSlot(_activeSlot.GetComponent<SlotComponent>().slotIndex);
+            Beneath.data.player.DropItemFromSlot(_activeSlot.GetComponent<SlotComponent>().slotIndex);
             RefreshSlots();
         }
 

@@ -7,7 +7,7 @@ public class SaveOrb : MonoBehaviour, IInteractable
     public void Interact(GameObject source)
     {
             
-        Beneath.InstantiateSafeThen(Beneath.Assets.SaveMenu, handle =>
+        Beneath.InstantiateSafeThen(Beneath.AssetReferences.SaveMenu, handle =>
         {
             handle.Result.GetComponent<SaveMenuManager>().Open();
         });

@@ -43,9 +43,15 @@ namespace UI.General
         
         #endif
         
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            Beneath.TextHelpers.SetIdealPointSize(TextBox, lineCount);
+        }
+        
         public void SelectAndReveal(String text)
         {
-            Manager.EventSys.SetSelectedGameObject(gameObject);
+            UIManager.EventSys.SetSelectedGameObject(gameObject);
             RevealText(text);
         }
         public void RevealText(String text)

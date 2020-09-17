@@ -27,7 +27,8 @@ namespace UI.EscapeMenu
             
             ResPicker.SetSelected(selectedResolution);
             FullScreenPicker.SetSelected(Screen.fullScreen ? 1 : 0);
-            VolumePicker.SetSelected(Mathf.CeilToInt(AudioListener.volume * 10));
+            int volumeValue = Mathf.CeilToInt(PlayerPrefs.GetFloat("masterVolume") * 10);
+            VolumePicker.SetSelected(volumeValue);
             
         }
     }
