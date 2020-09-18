@@ -3,7 +3,7 @@
 public class CameraFader : MonoBehaviour
 {
     
-    public Color fadeToColor = Color.black;
+    public Color fadeColor = Color.black;
     public bool startHidden;
     
     private float _fadeTime;
@@ -33,7 +33,7 @@ public class CameraFader : MonoBehaviour
     {
         _texture = new Texture2D(1, 1);
         _currentAlpha = startHidden ? 1 : 0;
-        _texture.SetPixel(0, 0, new Color(fadeToColor.r, fadeToColor.g, fadeToColor.b, _currentAlpha));
+        _texture.SetPixel(0, 0, new Color(fadeColor.r, fadeColor.g, fadeColor.b, _currentAlpha));
         _texture.Apply();
     }
     
@@ -47,7 +47,7 @@ public class CameraFader : MonoBehaviour
         if (condition)
         {
             _currentAlpha += _direction * Time.deltaTime / _fadeTime;
-            _texture.SetPixel(0, 0, new Color(fadeToColor.r, fadeToColor.g, fadeToColor.b, _currentAlpha));
+            _texture.SetPixel(0, 0, new Color(fadeColor.r, fadeColor.g, fadeColor.b, _currentAlpha));
             _texture.Apply();
         }
         

@@ -23,16 +23,15 @@ public class ControllableCharacter : Character, IInventory
     private SpriteRenderer _renderer;
     private BoxCollider2D _collider;
     private PlayerInput _playerInput;
-    private CameraFader _fader;
     private Animator _animator;
     private ConfinerShapeFinder _confinerShapeFinder;
     private static readonly int XInput = Animator.StringToHash("XInput");
     private static readonly int YInput = Animator.StringToHash("YInput");
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
 
-    private static Inventory PlayerInventory => Beneath.data.PlayerInventory;
-    private static InventorySlot CharacterArmor => Beneath.data.ArmorSlot;
-    private static InventorySlot CharacterWeapon => Beneath.data.WeaponSlot;
+    private static Inventory PlayerInventory => Beneath.instance.PlayerInventory;
+    private static InventorySlot CharacterArmor => Beneath.instance.ArmorSlot;
+    private static InventorySlot CharacterWeapon => Beneath.instance.WeaponSlot;
     
     public Vector2 GetPosition() { return _rigidbody.position; }
 
@@ -48,7 +47,6 @@ public class ControllableCharacter : Character, IInventory
         _renderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<BoxCollider2D>();
         _playerInput = GetComponent<PlayerInput>();
-        _fader = GetComponent<CameraFader>();
         _animator = GetComponent<Animator>();
         _confinerShapeFinder = GetComponentInChildren<ConfinerShapeFinder>(true);
     }
@@ -148,13 +146,13 @@ public class ControllableCharacter : Character, IInventory
     public Beneath.EquipResult EquipWeapon(int index)
     {
 
-        if (Beneath.data.PlayerInventory.GetSlot(index).GetItem() != null &&
-            Beneath.data.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Weapon)
+        if (Beneath.instance.PlayerInventory.GetSlot(index).GetItem() != null &&
+            Beneath.instance.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Weapon)
         {
 
             if (CharacterWeapon.GetItem() == null)
             {
-                CharacterWeapon.SetItem(Beneath.data.PlayerInventory.GetSlot(index).GetItem());
+                CharacterWeapon.SetItem(Beneath.instance.PlayerInventory.GetSlot(index).GetItem());
                 ClearItemFromSlot(index);
                 return Beneath.EquipResult.Success;
             }
@@ -170,13 +168,13 @@ public class ControllableCharacter : Character, IInventory
     public Beneath.EquipResult EquipArmor(int index)
     {
 
-        if (Beneath.data.PlayerInventory.GetSlot(index).GetItem() != null &&
-            Beneath.data.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Armor)
+        if (Beneath.instance.PlayerInventory.GetSlot(index).GetItem() != null &&
+            Beneath.instance.PlayerInventory.GetSlot(index).GetItem().type == ItemTypes.Armor)
         {
 
             if (CharacterArmor.GetItem() == null)
             {
-                CharacterArmor.SetItem(Beneath.data.PlayerInventory.GetSlot(index).GetItem());
+                CharacterArmor.SetItem(Beneath.instance.PlayerInventory.GetSlot(index).GetItem());
                 ClearItemFromSlot(index);
                 return Beneath.EquipResult.Success;
             }
@@ -240,7 +238,7 @@ public class ControllableCharacter : Character, IInventory
 
     }
 
-    public Inventory GetInventory() { return Beneath.data.PlayerInventory; }
+    public Inventory GetInventory() { return Beneath.instance.PlayerInventory; }
 
     public bool PickupItem(ItemData itemData)
     {
@@ -248,9 +246,9 @@ public class ControllableCharacter : Character, IInventory
         bool result = false;
         string message;
 
-        if (!Beneath.data.PlayerInventory.IsFull())
+        if (!Beneath.instance.PlayerInventory.IsFull())
         {
-            if (Beneath.data.PlayerInventory.GetNextEmptySlot().SetItem(itemData))
+            if (Beneath.instance.PlayerInventory.GetNextEmptySlot().SetItem(itemData))
             {
                 message = "You picked up \"" + itemData.name + "\".";
                 result = true;
@@ -265,7 +263,7 @@ public class ControllableCharacter : Character, IInventory
             message = "You tried to pick up \"" + itemData.name + "\", but your inventory was full.";
         }
 
-        Beneath.data.DialogBox.OpenWithText(message);
+        Beneath.instance.DialogBox.OpenWithText(message);
 
         return result;
     }
@@ -295,7 +293,7 @@ public class ControllableCharacter : Character, IInventory
 
     public void OnEscape()
     {
-        Beneath.data.EscapeMenu.Open();
+        Beneath.instance.EscapeMenu.Open();
     }
     
     public void TravelToSceneAtLocation(string scene, Vector2 location)
@@ -306,13 +304,13 @@ public class ControllableCharacter : Character, IInventory
     private void OnSceneTravelled(Vector2 toLocation)
     {
         _rigidbody.position = toLocation;
-        _fader.FadeOut(0.25f);
+        Beneath.instance.Fader.FadeOut(0.25f);
         _confinerShapeFinder.Refresh();
     }
 
     private IEnumerator TravelToScene(string toScene, Vector2 toLocation)
     {
-        _fader.FadeIn(0.25f);
+        Beneath.instance.Fader.FadeIn(0.25f);
         yield return new WaitForSeconds(0.25f);
         SceneManager.LoadSceneAsync(toScene).completed += operation =>
         {

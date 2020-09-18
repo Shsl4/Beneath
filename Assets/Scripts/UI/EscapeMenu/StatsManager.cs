@@ -27,23 +27,23 @@ namespace UI.EscapeMenu
         private void Refresh()
         {
 
-            var hasWeapon = Beneath.data.WeaponSlot.HasItem();
-            var hasArmor = Beneath.data.ArmorSlot.HasItem();
+            var hasWeapon = Beneath.instance.WeaponSlot.HasItem();
+            var hasArmor = Beneath.instance.ArmorSlot.HasItem();
             
-            nameText.text = "\"" + Beneath.data.PlayerName + "\"";
-            lvText.text = "LV: " + Beneath.data.PlayerLevel;
-            hpText.text = "HP: " + Beneath.data.PlayerHealth + " / " + Beneath.data.PlayerMaxHealth;
+            nameText.text = "\"" + Beneath.instance.PlayerName + "\"";
+            lvText.text = "LV: " + Beneath.instance.PlayerLevel;
+            hpText.text = "HP: " + Beneath.instance.PlayerHealth + " / " + Beneath.instance.PlayerMaxHealth;
             
-            attackText.text = "AT: " + (hasWeapon ? Beneath.data.WeaponSlot.GetItem().GetAttribute<DamageAttribute>().DamageAmount : 0);
-            defenseText.text = "DF: " + (hasArmor ? Beneath.data.ArmorSlot.GetItem().GetAttribute<DefenseAttribute>().DefenseAmount : 0);
+            attackText.text = "AT: " + (hasWeapon ? Beneath.instance.WeaponSlot.GetItem().GetAttribute<DamageAttribute>().DamageAmount : 0);
+            defenseText.text = "DF: " + (hasArmor ? Beneath.instance.ArmorSlot.GetItem().GetAttribute<DefenseAttribute>().DefenseAmount : 0);
             
-            expText.text = "EXP: " + Beneath.data.PlayerExp;
-            nextText.text = "NEXT: " + Beneath.data.ExpBeforeLevelUp;
+            expText.text = "EXP: " + Beneath.instance.PlayerExp;
+            nextText.text = "NEXT: " + Beneath.instance.ExpBeforeLevelUp;
             
-            weaponText.text = "WEAPON: " + (hasWeapon ? Beneath.data.WeaponSlot.GetItem().name : "NONE");
-            armorText.text = "ARMOR: " + (hasArmor ? Beneath.data.ArmorSlot.GetItem().name : "NONE");
+            weaponText.text = "WEAPON: " + (hasWeapon ? Beneath.instance.WeaponSlot.GetItem().name : "NONE");
+            armorText.text = "ARMOR: " + (hasArmor ? Beneath.instance.ArmorSlot.GetItem().name : "NONE");
             
-            goldText.text = "GOLD: " + Beneath.data.PlayerGold;
+            goldText.text = "GOLD: " + Beneath.instance.PlayerGold;
         }
         
     }

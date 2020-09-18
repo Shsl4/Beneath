@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1028675372137530399, guid: aad19c644c17c4892b9a7b7070132082, type: 3}
       propertyPath: sceneName
-      value: Room 01
+      value: Dev Lab - Main Room
       objectReference: {fileID: 0}
     - target: {fileID: 1028675372137530399, guid: aad19c644c17c4892b9a7b7070132082, type: 3}
       propertyPath: travelPosition.x

@@ -15,7 +15,7 @@ namespace Environment
         {
             public static bool False() { return false; }
             public static bool True() { return true; }
-            public static bool InventoryTest() { return Beneath.data.PlayerInventory.GetSlot(0).GetItem() != null; }
+            public static bool InventoryTest() { return Beneath.instance.PlayerInventory.GetSlot(0).GetItem() != null; }
         }
 
         [TextArea] public string openText = "The door opened.";
@@ -97,7 +97,7 @@ namespace Environment
         IEnumerator DisplayText(AudioClip clip, string text)
         {
             
-            Beneath.data.player.DisableInput();
+            Beneath.instance.player.DisableInput();
             
             if (clip)
             {
@@ -105,7 +105,7 @@ namespace Environment
                 yield return new WaitForSeconds(clip.length);
             }
             
-            Beneath.data.DialogBox.OpenWithText(text);
+            Beneath.instance.DialogBox.OpenWithText(text);
         }
 
     }

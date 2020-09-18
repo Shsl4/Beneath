@@ -11,7 +11,6 @@ namespace Battle
         private BoxCollider2D _boxCollider;
         private Rigidbody2D _rigidbody;
         private PlayerInput _playerInput;
-        private CameraFader _fader;
         private float _horizontalInput;
         private float _verticalInput;
         private const float HeartSpeed = .5f;
@@ -22,7 +21,6 @@ namespace Battle
             _boxCollider = FindObjectOfType<BoxCollider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _playerInput = GetComponent<PlayerInput>();
-            _fader = GetComponent<CameraFader>();
         }
         
         void FixedUpdate()

@@ -10,7 +10,7 @@ public static partial class Beneath
 
         static Items()
         {
-            NullKey = new ItemData(0,"NullKey", "You shouldn't have this.\n", AssetReferences.NullKeySprite, ItemTypes.Weapon, 0, new ItemAttribute[]{new DamageAttribute(999)});
+            NullKey = new ItemData(0,"NullKey", "You shouldn't have this.", AssetReferences.NullKeySprite, ItemTypes.Weapon, 0, new ItemAttribute[]{new DamageAttribute(999)});
         }
 
         public static ItemData GetItemWithID(int id)

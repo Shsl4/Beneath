@@ -25,7 +25,6 @@ public class ItemData
     public AssetReference spriteAsset;
     public ItemTypes type;
     public int value;
-    public Vector2 colliderSize;
     public ItemAttribute[] attributes;
 
     public Sprite sprite => _sprite;
@@ -57,7 +56,6 @@ public class ItemData
         Beneath.LoadThen<Sprite>(spriteAsset, handle =>
         {
             _sprite = handle.Result;
-            colliderSize = _sprite.rect.size;
         });
 
     }

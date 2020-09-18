@@ -19,7 +19,7 @@ namespace Environment
         protected bool Travel()
         {
             if (String.IsNullOrEmpty(sceneName)) { return false; }
-            Beneath.data.player.TravelToSceneAtLocation(sceneName, travelPosition);
+            Beneath.instance.player.TravelToSceneAtLocation(sceneName, travelPosition);
             return true;
         }
         

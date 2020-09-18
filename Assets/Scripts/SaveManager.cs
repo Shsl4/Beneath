@@ -16,7 +16,7 @@ public static partial class Beneath
             FileStream stream = new FileStream(savePath, FileMode.Create);
             formatter.Serialize(stream, progress);
             stream.Close();
-            data.RestartStopwatch();
+            instance.RestartStopwatch();
         }
 
         public static SaveData LoadProgress()
@@ -59,10 +59,10 @@ public static partial class Beneath
                 elapsedTime = LoadProgress().playTime;
             }
 
-            int armorID = data.ArmorSlot.GetItem() != null ? data.ArmorSlot.GetItem().id : -1;
-            int weaponID = data.WeaponSlot.GetItem() != null ? data.WeaponSlot.GetItem().id : -1;
+            int armorID = instance.ArmorSlot.GetItem() != null ? instance.ArmorSlot.GetItem().id : -1;
+            int weaponID = instance.WeaponSlot.GetItem() != null ? instance.WeaponSlot.GetItem().id : -1;
             
-            return new SaveData(data.PlayerName, SceneManager.GetActiveScene().name, data.PlayerHealth, data.PlayerExp, data.PlayerGold, armorID, weaponID, data.MakeSerializableInventory(), elapsedTime + data.ElapsedSessionTime, data.player.GetPosition());
+            return new SaveData(instance.PlayerName, SceneManager.GetActiveScene().name, instance.PlayerHealth, instance.PlayerExp, instance.PlayerGold, armorID, weaponID, instance.MakeSerializableInventory(), elapsedTime + instance.ElapsedSessionTime, instance.player.GetPosition());
 
         }
         
@@ -70,12 +70,12 @@ public static partial class Beneath
 
         public static void ResumeGame()
         {
-            data.ResumeFromSave(LoadProgress());
+            instance.ResumeFromSave(LoadProgress());
         }
 
         public static void BeginGameWithName(string name)
         {
-            data.BeginWithName(name);
+            instance.BeginWithName(name);
         }
 
     }

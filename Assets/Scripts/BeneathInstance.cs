@@ -10,18 +10,19 @@ using UnityEditor.AddressableAssets.Settings;
 
 #endif
 
-public class DataHolder : MonoBehaviour
+[RequireComponent(typeof(CameraFader))]
+public class BeneathInstance : MonoBehaviour
 {
     
     public string PlayerName { get; private set; }
     public int PlayerExp { get; private set; }        
     public int PlayerHealth { get; private set;}
-    public int PlayerGold { get; private set; }
+    public int PlayerGold { get; private set; }    
+    public CameraFader Fader { get; private set; }
     public int PlayerMaxHealth => DetermineMaxHealth();
     public int PlayerLevel => DetermineLevel();
     public int ExpBeforeLevelUp => DetermineExpBeforeLevelUp();
     public int ElapsedSessionTime => _stopwatch.Elapsed.Seconds;
-    
     
     public InventorySlot ArmorSlot { get; } = new InventorySlot();
     public InventorySlot WeaponSlot { get; } = new InventorySlot();
@@ -65,8 +66,9 @@ public class DataHolder : MonoBehaviour
     {
         
         DontDestroyOnLoad(gameObject);
-        
-        Beneath.data = this;
+
+        Fader = GetComponent<CameraFader>();
+        Beneath.instance = this;
         
         Beneath.AssetReferences.Item.LoadAssetAsync<GameObject>();
         Beneath.AssetReferences.DialogBox.LoadAssetAsync<GameObject>();
@@ -115,9 +117,11 @@ public class DataHolder : MonoBehaviour
         
         PlayerName = newName;
         PlayerHealth = PlayerMaxHealth;
-        SceneManager.LoadSceneAsync("Room 01").completed += handle =>
+        SceneManager.LoadSceneAsync("Dev Lab - Main Room").completed += handle =>
         {
             player = Instantiate((GameObject)Beneath.AssetReferences.PlayerCharacter.Asset).GetComponent<ControllableCharacter>();
+            Fader.fadeColor = Color.black;
+            Fader.FadeOut(5.0f);
             _stopwatch = Stopwatch.StartNew();
         };
 
@@ -190,7 +194,7 @@ public class DataHolder : MonoBehaviour
      */
     
 #if UNITY_EDITOR
-    [CustomEditor(typeof(DataHolder))]
+    [CustomEditor(typeof(BeneathInstance))]
     [CanEditMultipleObjects]
     public class DataHolderEditor : Editor
     {

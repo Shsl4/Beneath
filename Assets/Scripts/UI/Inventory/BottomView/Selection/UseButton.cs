@@ -13,14 +13,14 @@ namespace UI.Inventory.BottomView.Selection
             if (slot.GetHeldItem().type == ItemTypes.Weapon)
             {
 
-                Beneath.EquipResult result = Beneath.data.player.EquipWeapon(slot.slotIndex);
+                Beneath.EquipResult result = Beneath.instance.player.EquipWeapon(slot.slotIndex);
                 string message = "";
                 
                 switch (result)
                 {
   
                     case Beneath.EquipResult.Success:
-                        message = "You equipped \"" + Beneath.data.WeaponSlot.GetItem().name + "\".";
+                        message = "You equipped \"" + Beneath.instance.WeaponSlot.GetItem().name + "\".";
                         break;
 
                     case Beneath.EquipResult.AlreadyEquipped:
@@ -40,14 +40,14 @@ namespace UI.Inventory.BottomView.Selection
             else if (slot.GetHeldItem().type == ItemTypes.Armor)
             {
                     
-                Beneath.EquipResult result = Beneath.data.player.EquipArmor(slot.slotIndex);
+                Beneath.EquipResult result = Beneath.instance.player.EquipArmor(slot.slotIndex);
                 string message = "";
                 
                 switch (result)
                 {
   
                     case Beneath.EquipResult.Success:
-                        message = "You equipped \"" + Beneath.data.ArmorSlot.GetItem().name + "\".";
+                        message = "You equipped \"" + Beneath.instance.ArmorSlot.GetItem().name + "\".";
                         Manager.RefreshSlots();
                         break;
 

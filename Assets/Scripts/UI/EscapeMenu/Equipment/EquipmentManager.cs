@@ -19,8 +19,8 @@ namespace UI.EscapeMenu.Equipment
         
         public void RefreshSlots()
         {
-            WeaponSlot.SetHeldItem(Beneath.data.WeaponSlot.GetItem());
-            ArmorSlot.SetHeldItem(Beneath.data.ArmorSlot.GetItem());
+            WeaponSlot.SetHeldItem(Beneath.instance.WeaponSlot.GetItem());
+            ArmorSlot.SetHeldItem(Beneath.instance.ArmorSlot.GetItem());
         }
 
         public override void Open()
@@ -69,13 +69,13 @@ namespace UI.EscapeMenu.Equipment
             
             if (_activeSlot == ArmorSlot)
             {
-                itemName = Beneath.data.ArmorSlot.GetItem().name;
-                result = Beneath.data.player.UnEquipArmor(discard);
+                itemName = Beneath.instance.ArmorSlot.GetItem().name;
+                result = Beneath.instance.player.UnEquipArmor(discard);
             }
             else
             {
-                itemName = Beneath.data.WeaponSlot.GetItem().name;
-                result = Beneath.data.player.UnEquipWeapon(discard);
+                itemName = Beneath.instance.WeaponSlot.GetItem().name;
+                result = Beneath.instance.player.UnEquipWeapon(discard);
             }
 
             string message = "";

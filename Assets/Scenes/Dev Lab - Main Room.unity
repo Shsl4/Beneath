@@ -4087,7 +4087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590820355528507609, guid: 9bf90d97f5a8e42779f2d02b567d79de, type: 3}
       propertyPath: sceneName
-      value: Room 02
+      value: Dev Lab - Narrow Space
       objectReference: {fileID: 0}
     - target: {fileID: 590820355528507609, guid: 9bf90d97f5a8e42779f2d02b567d79de, type: 3}
       propertyPath: travelPosition.x
@@ -4306,7 +4306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 590820355528507609, guid: 9bf90d97f5a8e42779f2d02b567d79de, type: 3}
       propertyPath: sceneName
-      value: Room 03
+      value: Dev Lab - North Room
       objectReference: {fileID: 0}
     - target: {fileID: 590820355528507609, guid: 9bf90d97f5a8e42779f2d02b567d79de, type: 3}
       propertyPath: closedSprite

@@ -39,9 +39,9 @@ namespace UI.General
         public virtual void Open()
         {
 
-            if (Beneath.data.player)
+            if (Beneath.instance.player)
             {
-                Beneath.data.player.DisableInput();
+                Beneath.instance.player.DisableInput();
             }
             
             gameObject.SetActive(true);
@@ -62,7 +62,7 @@ namespace UI.General
             }
             else
             {
-                Beneath.data.player.EnableInput();
+                Beneath.instance.player.EnableInput();
             }
             
             gameObject.SetActive(false);

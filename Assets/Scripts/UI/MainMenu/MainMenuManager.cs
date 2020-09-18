@@ -16,13 +16,18 @@ namespace UI.MainMenu
         public TMP_Text characterNameText;
         public BeneathButton<MainMenuManager> aButton;
         public BeneathButton<MainMenuManager> noButton;
-        public GameObject playerClass;
-        
+        public AudioClip startCymbal;
+
         private StartButton _startButton;
         private EventSystem _eventSystem;
-        private CameraFader _fader;
         private string _playerName = "";
+        private EnterButton _enterButton;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            _enterButton = GetComponentInChildren<EnterButton>(true);
+        }
         public void AppendLetterToPlayerName(char letter)
         {
 
@@ -60,23 +65,25 @@ namespace UI.MainMenu
         
         private void Start()
         {
-            _fader = GetComponent<CameraFader>();
             _eventSystem = GetComponent<EventSystem>();
             _startButton = GetComponentInChildren<StartButton>(true);
-            _fader.FadeOut(3);
+            Beneath.instance.Fader.FadeOut(3);
         }
 
         public void OnEnter()
         {
 
-            _fader.FadeIn(0.5f);
+            Beneath.instance.Fader.FadeIn(0.5f);
             _eventSystem.SetSelectedGameObject(null);
             Beneath.DelayThen(this, 0.5f, () =>
             {
                 titleView.SetActive(false);
                 controlsView.SetActive(true);
-                _fader.FadeOut(0.5f);
+                Beneath.instance.Fader.FadeOut(0.5f);
                 _startButton.Select();
+                source.clip = _enterButton.menuTheme;
+                source.loop = true;
+                source.Play();
             });
             
         }
@@ -84,13 +91,13 @@ namespace UI.MainMenu
         public void OnStart()
         {
 
-            _fader.FadeIn(0.5f);
+            Beneath.instance.Fader.FadeIn(0.5f);
             _eventSystem.SetSelectedGameObject(null);
             Beneath.DelayThen(this, 0.5f, () =>
             {
                 controlsView.SetActive(false);
                 nameView.SetActive(true);
-                _fader.FadeOut(0.5f);
+                Beneath.instance.Fader.FadeOut(0.5f);
                 aButton.Select();
             });
             
@@ -100,14 +107,14 @@ namespace UI.MainMenu
         {
             if (String.IsNullOrEmpty(_playerName)) { return; }
             
-            _fader.FadeIn(0.5f);
+            Beneath.instance.Fader.FadeIn(0.5f);
             _eventSystem.SetSelectedGameObject(null);
             GetComponentInChildren<ZoomingName>(true).actualName = _playerName;
             Beneath.DelayThen(this, 0.5f, () =>
             {
                 nameView.SetActive(false);
                 nameValidationView.SetActive(true);
-                _fader.FadeOut(0.5f);
+                Beneath.instance.Fader.FadeOut(0.5f);
                 noButton.Select();
             });
             
@@ -116,13 +123,13 @@ namespace UI.MainMenu
         public void DenyName()
         {
             
-            _fader.FadeIn(0.5f);
+            Beneath.instance.Fader.FadeIn(0.5f);
             _eventSystem.SetSelectedGameObject(null);
             Beneath.DelayThen(this, 0.5f, () =>
             {
                 nameValidationView.SetActive(false);
                 nameView.SetActive(true);
-                _fader.FadeOut(0.5f);
+                Beneath.instance.Fader.FadeOut(0.5f);
                 aButton.Select();
             });
             
@@ -130,10 +137,19 @@ namespace UI.MainMenu
 
         public void BeginAdventure()
         {
-            _fader.fadeToColor = Color.white;
-            _fader.FadeIn(5.0f);
+            Beneath.instance.Fader.fadeColor = Color.white;
+            source.Stop();
+            source.PlayOneShot(startCymbal);
+            Beneath.instance.Fader.FadeIn(5.0f);
             _eventSystem.SetSelectedGameObject(null);
-            Beneath.DelayThen(this, 5.0f, (() => Beneath.SaveManager.BeginGameWithName(_playerName)));
+            Beneath.DelayThen(this, 3.0f, (() =>
+            {
+
+                nameValidationView.SetActive(false);
+                Beneath.instance.Fader.FadeOut(5.0f);
+                Beneath.DelayThen(this, 5.0f, () => Beneath.SaveManager.BeginGameWithName(_playerName));
+
+            }));
         }
         
     }
