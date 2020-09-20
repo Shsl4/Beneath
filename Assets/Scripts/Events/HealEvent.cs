@@ -5,14 +5,14 @@ namespace Events
     public class HealEvent : CancellableEvent
     {
         
-        public readonly int HealAmount;
-        public readonly GameObject HealSource;
+        public readonly int healAmount;
+        public readonly GameObject healSource;
 
         public HealEvent(int amount, GameObject source)
         {
 
-            HealAmount = amount;
-            HealSource = source;
+            healAmount = amount;
+            healSource = source;
 
         }
     }

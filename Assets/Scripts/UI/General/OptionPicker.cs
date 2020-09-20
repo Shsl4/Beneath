@@ -96,7 +96,7 @@ namespace UI.General
 
         public OptionPickerEditor()
         {
-            ShowDefaultNavigation = false;
+            showDefaultNavigation = false;
         }
         
     }

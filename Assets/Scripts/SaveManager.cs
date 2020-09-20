@@ -62,7 +62,7 @@ public static partial class Beneath
             int armorID = instance.ArmorSlot.GetItem() != null ? instance.ArmorSlot.GetItem().id : -1;
             int weaponID = instance.WeaponSlot.GetItem() != null ? instance.WeaponSlot.GetItem().id : -1;
             
-            return new SaveData(instance.PlayerName, SceneManager.GetActiveScene().name, instance.PlayerHealth, instance.PlayerExp, instance.PlayerGold, armorID, weaponID, instance.MakeSerializableInventory(), elapsedTime + instance.ElapsedSessionTime, instance.player.GetPosition());
+            return new SaveData(instance.PlayerName, SceneManager.GetActiveScene().buildIndex, instance.PlayerHealth, instance.PlayerExp, instance.PlayerGold, armorID, weaponID, instance.MakeSerializableInventory(), elapsedTime + instance.ElapsedSessionTime, instance.player.GetPosition());
 
         }
         

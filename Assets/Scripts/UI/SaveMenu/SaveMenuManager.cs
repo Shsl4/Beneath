@@ -30,7 +30,7 @@ namespace UI.SaveMenu
                 string str = time.ToString(@"mm\:ss");
                 
                 timeText.text = str;
-                areaText.text = data.roomName;
+                areaText.text = data.GetSavedRoomName();
 
             }
             else

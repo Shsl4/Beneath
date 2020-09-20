@@ -43,7 +43,7 @@ namespace UI.EscapeMenu.Equipment
         {
 
             ItemData itemData = slot.GetHeldItem();
-            String output = "";
+            string output = "";
 
             if (itemData != null)
             {

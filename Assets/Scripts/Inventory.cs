@@ -20,15 +20,14 @@ public class ItemData
 {
 
     public readonly int id;
-    public String name;
-    public String description;
+    public string name;
+    public string description;
     public AssetReference spriteAsset;
     public ItemTypes type;
     public int value;
     public ItemAttribute[] attributes;
 
-    public Sprite sprite => _sprite;
-    private Sprite _sprite;
+    public Sprite Sprite { get; private set; }
 
     public ItemData(int itemID, string name, string description, AssetReference spriteAsset, ItemTypes type, int value, ItemAttribute[] attributes)
     {
@@ -37,14 +36,44 @@ public class ItemData
         
         this.attributes = attributes ?? new ItemAttribute[0];
 
-        if (type == ItemTypes.Weapon && GetAttribute<DamageAttribute>() == null)
+        if (type == ItemTypes.Weapon)
         {
-            throw new ArgumentException("Tried to create a weapon item with no damage attribute. Aborting.");
+
+            if (GetAttribute<DamageAttribute>() == null)
+            {
+                throw new ArgumentException("Tried to create a weapon item with no damage attribute. " + "(" + name + ")");
+            }
+            
+            if (GetAttribute<DamageMultiplierAttribute>() != null)
+            {
+                throw new ArgumentException("Only armors may have a damage multiplier attribute. " + "(" + name + ")");
+            }
+            
+            if (GetAttribute<HealthMultiplierAttribute>() != null)
+            {
+                throw new ArgumentException("Only armors may have a health multiplier attribute. " + "(" + name + ")");
+            }
+            
+            if (GetAttribute<DefenseAttribute>() != null)
+            {
+                throw new ArgumentException("Only armors may have a defense attribute. " + "(" + name + ")");
+            }
+            
         }
         
-        if (type == ItemTypes.Armor && GetAttribute<DefenseAttribute>() == null)
+        if (type == ItemTypes.Armor)
         {
-            throw new ArgumentException("Tried to create an armor item with no defense attribute. Aborting.");
+
+            if (GetAttribute<DefenseAttribute>() == null)
+            {
+                throw new ArgumentException("Tried to create an armor item with no defense attribute. " + "(" + name + ")");
+            }
+            
+            if (GetAttribute<DamageAttribute>() != null)
+            {
+                throw new ArgumentException("Only weapons may have a damage attribute. " + "(" + name + ")");
+            }
+            
         }
         
         this.name = name;
@@ -55,7 +84,7 @@ public class ItemData
 
         Beneath.LoadThen<Sprite>(spriteAsset, handle =>
         {
-            _sprite = handle.Result;
+            Sprite = handle.Result;
         });
 
     }

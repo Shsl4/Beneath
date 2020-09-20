@@ -34,8 +34,8 @@ namespace UI.EscapeMenu
             lvText.text = "LV: " + Beneath.instance.PlayerLevel;
             hpText.text = "HP: " + Beneath.instance.PlayerHealth + " / " + Beneath.instance.PlayerMaxHealth;
             
-            attackText.text = "AT: " + (hasWeapon ? Beneath.instance.WeaponSlot.GetItem().GetAttribute<DamageAttribute>().DamageAmount : 0);
-            defenseText.text = "DF: " + (hasArmor ? Beneath.instance.ArmorSlot.GetItem().GetAttribute<DefenseAttribute>().DefenseAmount : 0);
+            attackText.text = "AT: " + (hasWeapon ? Beneath.instance.WeaponSlot.GetItem().GetAttribute<DamageAttribute>().damageAmount : 0);
+            defenseText.text = "DF: " + (hasArmor ? Beneath.instance.ArmorSlot.GetItem().GetAttribute<DefenseAttribute>().defenseAmount : 0);
             
             expText.text = "EXP: " + Beneath.instance.PlayerExp;
             nextText.text = "NEXT: " + Beneath.instance.ExpBeforeLevelUp;

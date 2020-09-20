@@ -4,6 +4,6 @@ namespace Interfaces
 {
     public interface IIdentifiable
     {
-        String GetIdentifiableName();
+        string GetIdentifiableName();
     }
 }

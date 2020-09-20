@@ -108,8 +108,8 @@ namespace UI.General
             
         }
         
-        protected virtual void SubmitAction() { Debug.Log("Called base SubmitAction on object " + gameObject.name + ". Please inherit the class to add functionality.");}
-        protected virtual void CancelAction() { Debug.Log("Called base CancelAction on object " + gameObject.name + ". Please inherit the class to add functionality.");}
+        protected virtual void SubmitAction() { Debug.Log("Called base SubmitAction on object " + gameObject.name + ". Override the function to add functionality.");}
+        protected virtual void CancelAction() { Debug.Log("Called base CancelAction on object " + gameObject.name + ". Override the function to add functionality.");}
         
     }
     
@@ -129,7 +129,7 @@ namespace UI.General
         private SerializedProperty _selectSound;
         private SerializedProperty _submitSound;
 
-        protected bool ShowDefaultNavigation = true;
+        protected bool showDefaultNavigation = true;
 
         private bool _colorFoldout = true;
         private bool _navFoldout = true;
@@ -160,7 +160,7 @@ namespace UI.General
         protected virtual void MakeNavigation()
         {
             
-            if (ShowDefaultNavigation)
+            if (showDefaultNavigation)
             {
                 EditorGUILayout.PropertyField(_navigation, true);
                 EditorGUILayout.Space();

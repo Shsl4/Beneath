@@ -6,11 +6,11 @@ namespace Attributes
     public abstract class ItemAttribute
     {
     
-        public readonly String AttributeName;
+        public readonly string attributeName;
 
-        protected ItemAttribute(String name)
+        protected ItemAttribute(string name)
         {
-            AttributeName = name;
+            attributeName = name;
         }
 
         public abstract string Format();

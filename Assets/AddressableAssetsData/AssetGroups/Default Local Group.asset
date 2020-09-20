@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8b6bd6b6f76d93f4dafe4dc9717b4bc0
+  m_SerializeEntries:
+  - m_GUID: 074633be9278fc24b84fefde96e0ddfe
+    m_Address: Assets/Art/Sprites/NullKey.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 0bb61c44a1f1c45409e307e612c5a689
+    m_Address: Assets/Prefabs/Characters/BeneathPlayer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1b19d4511ee8eaa49955ec6cba3aaf39
+    m_Address: Assets/Prefabs/UI/EscapeMenu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 295a15b80bc80374292a0003c1317b14
+    m_Address: Assets/Prefabs/UI/SaveMenu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 32ac9320186c5ab47b299ba0ff667599
+    m_Address: Assets/Prefabs/UI/MainMenu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 426a210c48e96fa4faecb2ad476539ad
+    m_Address: Assets/Prefabs/Item.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 68a32aa7fb580054fbe7d835e2db42ce
+    m_Address: Assets/Prefabs/UI/DialogBox.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 78128a91baf6a7c419bb5827d36fc910
+    m_Address: Assets/Prefabs/UI/ResumeMenu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 87b920355a7d1834eaa17aae8a57ab4c, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1456ccc965e3c6149ab4e2f77976ebcf, type: 2}
+    - {fileID: 11400000, guid: 3aa8e109e94796d409eeb50fd8cf3a20, type: 2}

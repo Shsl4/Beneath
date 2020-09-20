@@ -64,7 +64,7 @@ namespace Environment
                 if (CanOpen())
                 {
 
-                    if (String.IsNullOrEmpty(openText))
+                    if (string.IsNullOrEmpty(openText))
                     {
                         openText = "The door opened"; 
                     }
@@ -77,7 +77,7 @@ namespace Environment
                 else
                 {
  
-                    if (String.IsNullOrEmpty(closedText))
+                    if (string.IsNullOrEmpty(closedText))
                     {
                         closedText = "It's closed.";
                     }

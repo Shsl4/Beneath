@@ -3,12 +3,12 @@
 namespace Attributes
 {
     [Serializable]
-    public class HealthModifierAttribute : ItemAttribute
+    public class HealthMultiplierAttribute : ItemAttribute
     {
 
         public float multiplier;
 
-        public HealthModifierAttribute(float multiplier) : base("Health Modifier")
+        public HealthMultiplierAttribute(float multiplier) : base("Health Multiplier")
         {
             this.multiplier = multiplier;
         }

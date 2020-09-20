@@ -1,13 +1,14 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Battle
 {
     public class BattleHeart : MonoBehaviour
     {
 
-        private SpriteRenderer _spriteRenderer;
+        private Image _image;
         private BoxCollider2D _boxCollider;
         private Rigidbody2D _rigidbody;
         private PlayerInput _playerInput;
@@ -17,7 +18,7 @@ namespace Battle
 
         void Awake()
         {
-            _spriteRenderer = FindObjectOfType<SpriteRenderer>();
+            _image = FindObjectOfType<Image>();
             _boxCollider = FindObjectOfType<BoxCollider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _playerInput = GetComponent<PlayerInput>();
@@ -34,8 +35,8 @@ namespace Battle
         private void UpdatePosition()
         {
             Vector2 position = _rigidbody.position;
-            position.x += 10.0f * _horizontalInput * Time.deltaTime * HeartSpeed;
-            position.y += 10.0f * _verticalInput * Time.deltaTime * HeartSpeed;
+            position.x += 1000.0f * _horizontalInput * Time.deltaTime * HeartSpeed;
+            position.y += 1000.0f * _verticalInput * Time.deltaTime * HeartSpeed;
             _rigidbody.MovePosition(position);
         }
         
@@ -56,12 +57,12 @@ namespace Battle
     public class BattleHeartEditor : Editor
     {
         
-        private SpriteRenderer _spriteRenderer;
+        private Image _image;
         private BoxCollider2D _collider;
 
         protected void OnEnable()
         {
-            _spriteRenderer = ((BattleHeart)serializedObject.targetObject).GetComponent<SpriteRenderer>();
+            _image = ((BattleHeart)serializedObject.targetObject).GetComponent<Image>();
             _collider = ((BattleHeart)serializedObject.targetObject).GetComponent<BoxCollider2D>();
         }
 
@@ -74,12 +75,11 @@ namespace Battle
             if (GUILayout.Button("Auto-Size Collider"))
             {
                 
-                var bounds = _spriteRenderer.bounds;
+                var bounds = _image.rectTransform.rect.size;
                 Vector3 lossyScale = ((BattleHeart)serializedObject.targetObject).transform.lossyScale;
         
-                _collider.size = new Vector3(bounds.size.x / lossyScale.x,
-                    bounds.size.y / lossyScale.y,
-                    bounds.size.z / lossyScale.z);
+                _collider.size = new Vector2(bounds.x / lossyScale.x,
+                    bounds.y / lossyScale.y);
                 
             }
             

@@ -49,12 +49,12 @@ namespace UI.General
             Beneath.TextHelpers.SetIdealPointSize(TextBox, lineCount);
         }
         
-        public void SelectAndReveal(String text)
+        public void SelectAndReveal(string text)
         {
             UIManager.EventSys.SetSelectedGameObject(gameObject);
             RevealText(text);
         }
-        public void RevealText(String text)
+        public void RevealText(string text)
         {
             _textToReveal = "* " + text;
             List<int> indexes = new List<int>();
@@ -163,7 +163,7 @@ namespace UI.General
             
             while (!_instantReveal && revealedChars < to - from)
             {
-                if (textSound)
+                if (textSound && _textToReveal[revealedChars + from] != ' ' && _textToReveal[revealedChars + from] != '\n' && _textToReveal[revealedChars + from] != '*')
                 {
                     Manager.source.PlayOneShot(textSound);
                 }
@@ -195,7 +195,7 @@ namespace UI.General
         private SerializedProperty _revealSpeed;
         private SerializedProperty _lineCount;
 
-        private bool _boxFoldout;
+        private bool _boxFoldout = true;
         
         protected override void OnEnable()
         {

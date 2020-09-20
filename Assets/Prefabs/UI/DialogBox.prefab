@@ -395,8 +395,8 @@ MonoBehaviour:
   backNavigationType: 0
   submitType: 0
   allowBackNavigation: 1
-  textSound: {fileID: 8300000, guid: 6f88a72747092324a8e269be82b0cdd0, type: 3}
-  revealSpeed: 1
+  textSound: {fileID: 8300000, guid: 6874f5df7fb47844485994e10c4733cb, type: 3}
+  revealSpeed: 0.75
   lineCount: 4
 --- !u!1 &7872962426798672899
 GameObject:
@@ -431,7 +431,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.035, y: 0.15}
-  m_AnchorMax: {x: 0.95, y: 0.85}
+  m_AnchorMax: {x: 0.965, y: 0.85}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

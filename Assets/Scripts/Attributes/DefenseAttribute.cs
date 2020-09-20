@@ -5,16 +5,16 @@ namespace Attributes
     [Serializable]
     public class DefenseAttribute : ItemAttribute
     {
-        public readonly int DefenseAmount;
+        public readonly int defenseAmount;
 
         public DefenseAttribute(int defenseAmount) : base("Defense")
         {
-            DefenseAmount = defenseAmount;
+            this.defenseAmount = defenseAmount;
         }
         
         public override string Format()
         {
-            return ("DEF: " + DefenseAmount);
+            return ("DEF: " + defenseAmount);
         }
     
     }

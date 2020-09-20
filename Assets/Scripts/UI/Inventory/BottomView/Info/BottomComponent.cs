@@ -16,7 +16,7 @@ namespace UI.Inventory.BottomView.Info
         public void UpdateInfo(ItemData itemData)
         {
             
-            String output = "";
+            string output = "";
 
             if (itemData != null)
             {

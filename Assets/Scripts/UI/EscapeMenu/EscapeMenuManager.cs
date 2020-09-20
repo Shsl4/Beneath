@@ -14,31 +14,31 @@ namespace UI.EscapeMenu
         public StatsManager StatsMgr => GetComponentInChildren<StatsManager>(true);
         public SettingsManager SettingsMgr => GetComponentInChildren<SettingsManager>(true);
 
-        public Selectable InventoryBtn;
-        public Selectable EquipmentBtn;
-        public Selectable StatsBtn;
-        public Selectable SettingsBtn;
-        public Selectable ExitBtn;
+        public Selectable inventoryBtn;
+        public Selectable equipmentBtn;
+        public Selectable statsBtn;
+        public Selectable settingsBtn;
+        public Selectable exitBtn;
         
         public override void EnableSelection()
         {
 
-            InventoryBtn.interactable = true;
-            EquipmentBtn.interactable = true;
-            StatsBtn.interactable = true;
-            SettingsBtn.interactable = true;
-            ExitBtn.interactable = true;
+            inventoryBtn.interactable = true;
+            equipmentBtn.interactable = true;
+            statsBtn.interactable = true;
+            settingsBtn.interactable = true;
+            exitBtn.interactable = true;
 
         }
 
         public override void DisableSelection()
         {
             
-            InventoryBtn.interactable = false;
-            EquipmentBtn.interactable = false;
-            StatsBtn.interactable = false;
-            SettingsBtn.interactable = false;
-            ExitBtn.interactable = false;
+            inventoryBtn.interactable = false;
+            equipmentBtn.interactable = false;
+            statsBtn.interactable = false;
+            settingsBtn.interactable = false;
+            exitBtn.interactable = false;
             
         }
 

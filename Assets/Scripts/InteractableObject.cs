@@ -10,7 +10,7 @@ public class InteractableObject : MonoBehaviour, IInteractable, IIdentifiable
     public void Interact(GameObject source)
     {
 
-        String sourceName = source.name;
+        string sourceName = source.name;
         
         if (source.GetComponent<IIdentifiable>() != null)
         {

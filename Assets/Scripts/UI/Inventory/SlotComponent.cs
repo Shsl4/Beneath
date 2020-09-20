@@ -19,10 +19,10 @@ namespace UI.Inventory
             Image imageComponent = GetComponentsInChildren<Image>()[1];
             _heldItemData = itemData;
 
-            if (_heldItemData == null || !_heldItemData.sprite) { imageComponent.color = Color.black; }
+            if (_heldItemData == null || !_heldItemData.Sprite) { imageComponent.color = Color.black; }
             else
             {
-                imageComponent.sprite = _heldItemData.sprite;
+                imageComponent.sprite = _heldItemData.Sprite;
                 imageComponent.color = Color.white;
             }
 

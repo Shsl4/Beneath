@@ -18,7 +18,7 @@ namespace Environment
         
         protected bool Travel()
         {
-            if (String.IsNullOrEmpty(sceneName)) { return false; }
+            if (string.IsNullOrEmpty(sceneName)) { return false; }
             Beneath.instance.player.TravelToSceneAtLocation(sceneName, travelPosition);
             return true;
         }
@@ -61,7 +61,7 @@ namespace Environment
             EditorGUILayout.Space();
             serializedObject.Update();
             
-            if (!String.IsNullOrEmpty(_sceneName.stringValue))
+            if (!string.IsNullOrEmpty(_sceneName.stringValue))
             {
                 
                 EditorGUILayout.HelpBox("Set to travel to \'" + _sceneName.stringValue + "\' at position " + _travelPosition.vector2Value, MessageType.Info);

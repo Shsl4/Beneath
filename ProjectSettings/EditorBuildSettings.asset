@@ -21,5 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Dev Lab - North Room.unity
     guid: b51758d08abd3c14eb7ec759610c7405
   m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: 2a2bd48897741a84393b8d8e4b165343, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: ba5bc17a9eacff54c9a5d78cf1aba046, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: e1d74db35207fa44289ab4cfd43da80c, type: 2}

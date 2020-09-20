@@ -103,7 +103,7 @@ public class BeneathInstance : MonoBehaviour
 
         for (int i = 0; i < data.playerInventory.Length; i++) { PlayerInventory.GetSlot(i).SetItem(Beneath.Items.GetItemWithID(data.playerInventory[i])); }
 
-        SceneManager.LoadSceneAsync(data.roomName).completed += handle =>
+        SceneManager.LoadSceneAsync(data.roomIndex).completed += handle =>
         {
             Vector2 location = new Vector2(data.saveLocation[0], data.saveLocation[1]);
             player = Instantiate((GameObject) Beneath.AssetReferences.PlayerCharacter.Asset, location, new Quaternion()).GetComponent<ControllableCharacter>();

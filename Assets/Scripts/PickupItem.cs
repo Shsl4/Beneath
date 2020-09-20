@@ -35,7 +35,7 @@ public class PickupItem : MonoBehaviour, IInteractable
         
         ItemData representedItem = Beneath.Items.GetItemWithID(id);
         Collider.size = new Vector2(1, 1);
-        Renderer.sprite = representedItem.sprite;
+        Renderer.sprite = representedItem.Sprite;
         
     }
 

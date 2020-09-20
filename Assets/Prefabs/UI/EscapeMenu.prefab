@@ -1888,11 +1888,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 0}
   firstSelected: {fileID: 2816849229904739625}
-  InventoryBtn: {fileID: 8915780775738812992}
-  EquipmentBtn: {fileID: 5162593754295589673}
-  StatsBtn: {fileID: 2220973841101040448}
-  SettingsBtn: {fileID: 1780410888547922793}
-  ExitBtn: {fileID: 618249865785329270}
+  inventoryBtn: {fileID: 8915780775738812992}
+  equipmentBtn: {fileID: 5162593754295589673}
+  statsBtn: {fileID: 2220973841101040448}
+  settingsBtn: {fileID: 1780410888547922793}
+  exitBtn: {fileID: 618249865785329270}
 --- !u!1 &2546003265641571746
 GameObject:
   m_ObjectHideFlags: 0
@@ -5351,7 +5351,7 @@ MonoBehaviour:
   backNavigationType: 0
   submitType: 0
   allowBackNavigation: 1
-  textSound: {fileID: 8300000, guid: 6f88a72747092324a8e269be82b0cdd0, type: 3}
+  textSound: {fileID: 8300000, guid: 6874f5df7fb47844485994e10c4733cb, type: 3}
   revealSpeed: 1
   lineCount: 6
 --- !u!1 &5951309067924692687
@@ -6927,7 +6927,7 @@ MonoBehaviour:
   backNavigationType: 0
   submitType: 0
   allowBackNavigation: 1
-  textSound: {fileID: 8300000, guid: 6f88a72747092324a8e269be82b0cdd0, type: 3}
+  textSound: {fileID: 8300000, guid: 6874f5df7fb47844485994e10c4733cb, type: 3}
   revealSpeed: 1
   lineCount: 6
 --- !u!1 &7283730410424523757

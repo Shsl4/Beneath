@@ -2,6 +2,6 @@
 {
     public abstract class CancellableEvent
     {
-        public bool Cancelled = false;
+        public bool cancelled = false;
     }
 }

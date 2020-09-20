@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static partial class Beneath
 {
@@ -7,7 +9,7 @@ public static partial class Beneath
     public class SaveData
     {
         
-        public string roomName;
+        public int roomIndex;
         public int playTime;
         public float[] saveLocation;
         
@@ -18,13 +20,11 @@ public static partial class Beneath
         public int playerArmor;
         public int playerWeapon;
         public int[] playerInventory;
-        
 
-
-        public SaveData(string playerName, string roomName, int playerHealth, int playerExp, int playerMoney, int playerArmor, int playerWeapon, int[] playerInventory, int playTime, Vector2 saveLocation)
+        public SaveData(string playerName, int roomIndex, int playerHealth, int playerExp, int playerMoney, int playerArmor, int playerWeapon, int[] playerInventory, int playTime, Vector2 saveLocation)
         {
             this.playerName = playerName;
-            this.roomName = roomName;
+            this.roomIndex = roomIndex;
             this.playerHealth = playerHealth;
             this.playerExp = playerExp;
             this.playerMoney = playerMoney;
@@ -34,5 +34,11 @@ public static partial class Beneath
             this.playTime = playTime;
             this.saveLocation = new []{saveLocation.x, saveLocation.y};
         }
+
+        public string GetSavedRoomName()
+        {
+            return SceneUtility.GetScenePathByBuildIndex(roomIndex) != "" ? Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(roomIndex)) : "Room " + roomIndex;
+        }
+        
     }
 }

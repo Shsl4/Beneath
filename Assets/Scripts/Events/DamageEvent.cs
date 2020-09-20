@@ -5,14 +5,14 @@ namespace Events
     public class DamageEvent : CancellableEvent
     {
         
-        public readonly int DamageAmount;
-        public readonly GameObject DamageSource;
+        public readonly int damageAmount;
+        public readonly GameObject damageSource;
 
         public DamageEvent(int amount, GameObject source)
         {
 
-            DamageAmount = amount;
-            DamageSource = source;
+            damageAmount = amount;
+            damageSource = source;
 
         }
     }

@@ -38,11 +38,11 @@ namespace UI.MainMenu
 
             if (nameLength <= 0 || _playerName[nameLength - 1] == '-')
             {
-                formatted = Char.ToUpper(letter);
+                formatted = char.ToUpper(letter);
             }
             else
             {
-                formatted = Char.ToLower(letter);
+                formatted = char.ToLower(letter);
             }
             
             _playerName += formatted;
@@ -105,7 +105,7 @@ namespace UI.MainMenu
 
         public void ConfirmName()
         {
-            if (String.IsNullOrEmpty(_playerName)) { return; }
+            if (string.IsNullOrEmpty(_playerName)) { return; }
             
             Beneath.instance.Fader.FadeIn(0.5f);
             _eventSystem.SetSelectedGameObject(null);

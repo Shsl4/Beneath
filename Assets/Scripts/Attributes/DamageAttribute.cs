@@ -5,16 +5,16 @@ namespace Attributes
     [Serializable]
     public class DamageAttribute : ItemAttribute
     {
-        public readonly int DamageAmount;
+        public readonly int damageAmount;
 
         public DamageAttribute(int damageAmount) : base("Damage")
         {
-            DamageAmount = damageAmount;
+            this.damageAmount = damageAmount;
         }
 
         public override string Format()
         {
-            return ("DMG: " + DamageAmount);
+            return ("DMG: " + damageAmount);
         }
     }
 }

@@ -99,7 +99,7 @@ public class ControllableCharacter : Character, IInventory
             {
                 if (attribute is DamageAttribute damageAttribute)
                 {
-                    characterDamage = damageAttribute.DamageAmount;
+                    characterDamage = damageAttribute.damageAmount;
                 }
             }
         }
@@ -108,7 +108,7 @@ public class ControllableCharacter : Character, IInventory
         {
             foreach (var attribute in CharacterArmor.GetItem().attributes)
             {
-                if (attribute is DamageModifierAttribute modifier)
+                if (attribute is DamageMultiplierAttribute modifier)
                 {
                     if (modifier.multiplier > 0.0f)
                     {

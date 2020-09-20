@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour, IIdentifiable
 {
     
-    public String characterName;
+    public string characterName;
 
     public string GetIdentifiableName() { return characterName; }
     

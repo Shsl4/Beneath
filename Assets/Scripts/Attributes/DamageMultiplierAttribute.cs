@@ -3,11 +3,11 @@
 namespace Attributes
 {
     [Serializable]
-    public class DamageModifierAttribute : ItemAttribute
+    public class DamageMultiplierAttribute : ItemAttribute
     {
         public float multiplier;
 
-        public DamageModifierAttribute(float multiplier) : base("Damage Modifier")
+        public DamageMultiplierAttribute(float multiplier) : base("Damage Multiplier")
         {
             this.multiplier = multiplier;
         }
