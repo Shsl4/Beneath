@@ -9,12 +9,12 @@ public class BattleArea : MonoBehaviour
     private EdgeCollider2D _collider;
     private RectTransform _rect;
     private float _resizeTime = 5.0f;
-    private (Vector2 min, Vector2 max) _targetSize = (new Vector2(1, 1), new Vector2(1, 1));
+    private (Vector2 min, Vector2 max) _targetSize = (new Vector2(0, 0), new Vector2(0, 0));
     private float TimeMultiplier => Time.deltaTime / (2 * _resizeTime);
-    private bool ShouldResizeXMin => Math.Abs(_rect.anchorMin.x - _targetSize.min.x) > 0.001f;
-    private bool ShouldResizeYMin => Math.Abs(_rect.anchorMin.y - _targetSize.min.y) > 0.001f;
-    private bool ShouldResizeXMax => Math.Abs(_rect.anchorMax.x - _targetSize.max.x) > 0.001f;
-    private bool ShouldResizeYMax => Math.Abs(_rect.anchorMax.y - _targetSize.max.y) > 0.001f;
+    private bool ShouldResizeXMin => Math.Abs(_rect.anchorMin.x - _targetSize.min.x) <= 0.001f;
+    private bool ShouldResizeYMin => Math.Abs(_rect.anchorMin.y - _targetSize.min.y) <= 0.001f;
+    private bool ShouldResizeXMax => Math.Abs(_rect.anchorMax.x - _targetSize.max.x) <= 0.001f;
+    private bool ShouldResizeYMax => Math.Abs(_rect.anchorMax.y - _targetSize.max.y) <= 0.001f;
     
     private void Awake()
     {

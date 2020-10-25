@@ -12,7 +12,6 @@ public static partial class Beneath
         public int roomIndex;
         public int playTime;
         public float[] saveLocation;
-        
         public string playerName;
         public int playerHealth;
         public int playerExp;

@@ -10,6 +10,7 @@ public static partial class Beneath
     {
         public static void SaveProgress()
         {
+            
             BinaryFormatter formatter = new BinaryFormatter();
             SaveData progress = MakeSerializableProgress();
             string savePath = Application.persistentDataPath + "/beneath.data";
@@ -17,6 +18,7 @@ public static partial class Beneath
             formatter.Serialize(stream, progress);
             stream.Close();
             instance.RestartStopwatch();
+            
         }
 
         public static SaveData LoadProgress()
@@ -29,7 +31,6 @@ public static partial class Beneath
 
                 try
                 {
-
                     FileStream stream = new FileStream(savePath, FileMode.Open);
 
                     if (stream.CanRead && stream.Length > 0)

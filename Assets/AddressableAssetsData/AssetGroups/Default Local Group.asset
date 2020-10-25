@@ -59,6 +59,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 6df4fd4f69868e1449c9747d1342516f
+    m_Address: Assets/Art/Animations/Faith/Faith - Idle Right.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 78128a91baf6a7c419bb5827d36fc910
     m_Address: Assets/Prefabs/UI/ResumeMenu.prefab
     m_ReadOnly: 0
